@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - DriveRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Terms Page Specific Styles */
+        .terms-container {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .terms-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+        
+        .terms-header h1 {
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .terms-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .last-updated {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: 600;
+            color: #2980b9;
+        }
+        
+        .terms-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .terms-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .terms-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .terms-section h2 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .terms-section h3 {
+            font-size: 22px;
+            color: var(--dark);
+            margin: 25px 0 15px;
+        }
+        
+        .terms-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .terms-section ul, .terms-section ol {
+            margin: 15px 0 15px 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: #444;
+            font-weight: 500;
+        }
+        
+        .definition-list {
+            margin: 20px 0;
+        }
+        
+        .definition-item {
+            margin-bottom: 15px;
+        }
+        
+        .definition-term {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .terms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .terms-table th {
+            background-color: #f1f1f1;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+        
+        .terms-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .terms-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .warning-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .acceptance-section {
+            background-color: #e8f4fc;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .acceptance-section h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        
+        .back-to-top:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+        }
+        
+        /* Table of Contents */
+        .toc-container {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .toc-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .toc-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .toc-list li:before {
+            content: "•";
+            color: var(--secondary);
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .toc-list a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc-list a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        
+        /* Print Styles */
+        @media print {
+            header, footer, .back-to-top {
+                display: none;
+            }
+            
+            .terms-container {
+                padding: 20px 0;
+                background-color: white;
+            }
+            
+            .terms-content {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Drive<span>Rent</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Cars</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terms Container -->
+    <section class="terms-container">
+        <div class="container">
+            <!-- Terms Header -->
+            <div class="terms-header">
+                <h1>Terms & Conditions</h1>
+                <p>Please read these terms and conditions carefully before using DriveRent's car rental services. By accessing or using our services, you agree to be bound by these terms.</p>
+                <div class="last-updated">Last Updated: October 15, 2023</div>
+            </div>
+            
+            <!-- Table of Contents -->
+            <div class="toc-container">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#agreement">1. Agreement to Terms</a></li>
+                    <li><a href="#eligibility">2. Eligibility Requirements</a></li>
+                    <li><a href="#rental">3. Rental Agreement Terms</a></li>
+                    <li><a href="#payments">4. Payments and Charges</a></li>
+                    <li><a href="#insurance">5. Insurance and Protection</a></li>
+                    <li><a href="#use">6. Permitted Use of Vehicles</a></li>
+                    <li><a href="#prohibited">7. Prohibited Activities</a></li>
+                    <li><a href="#damages">8. Damages and Liability</a></li>
+                    <li><a href="#cancellation">9. Cancellation Policy</a></li>
+                    <li><a href="#privacy">10. Privacy and Data</a></li>
+                    <li><a href="#modifications">11. Modifications to Terms</a></li>
+                    <li><a href="#contact">12. Contact Information</a></li>
+                </ul>
+            </div>
+            
+            <!-- Terms Content -->
+            <div class="terms-content">
+                <!-- Section 1 -->
+                <div class="terms-section" id="agreement">
+                    <h2>1. Agreement to Terms</h2>
+                    <p>These Terms and Conditions ("Terms") govern your use of DriveRent's car rental services, website, and mobile applications (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access the Services.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> These Terms constitute a legally binding agreement between you and DriveRent. You should read them carefully before using our Services.</p>
+                    </div>
+                    
+                    <h3>1.1 Acceptance</h3>
+                    <p>By completing a reservation, making a payment, or taking possession of a vehicle, you acknowledge that you have read, understood, and agreed to be bound by these Terms and any additional terms provided at the time of rental.</p>
+                    
+                    <h3>1.2 Updates to Terms</h3>
+                    <p>We reserve the right to modify these Terms at any time. We will notify users of any material changes by posting the new Terms on our website. Your continued use of the Services after such changes constitutes your acceptance of the new Terms.</p>
+                </div>
+                
+                <!-- Section 2 -->
+                <div class="terms-section" id="eligibility">
+                    <h2>2. Eligibility Requirements</h2>
+                    <p>To rent a vehicle from DriveRent, you must meet the following requirements:</p>
+                    
+                    <div class="definition-list">
+                        <div class="definition-item">
+                            <div class="definition-term">Age Requirements</div>
+                            <p>Renters must be at least 21 years old. For luxury or specialty vehicles, the minimum age may be 25. Drivers under 25 may be subject to a Young Driver Surcharge.</p>
+                        </div>
+                        
+                        <div class="definition-item">
+                            <div class="definition-term">Valid Driver's License</div>
+                            <p>You must possess a valid, unexpired driver's license issued by your country of residence. International renters may need an International Driving Permit (IDP) along with their home country license.</p>
+                        </div>
+                        
+                        <div class="definition-item">
+                            <div class="definition-term">Credit/Debit Card</div>
+                            <p>A valid credit or debit card in the renter's name is required for security deposit. The card must have sufficient funds to cover the security deposit and any anticipated charges.</p>
+                        </div>
+                        
+                        <div class="definition-item">
+                            <div class="definition-term">Insurance Requirements</div>
+                            <p>You must have valid insurance coverage or purchase our insurance options. Proof of insurance may be required at the time of pickup.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="terms-table">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Category</th>
+                                    <th>Minimum Age</th>
+                                    <th>License Held For</th>
+                                    <th>Security Deposit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Economy/Compact</td>
+                                    <td>21 years</td>
+                                    <td>1 year</td>
+                                    <td>$200</td>
+                                </tr>
+                                <tr>
+                                    <td>Mid-size/SUV</td>
+                                    <td>21 years</td>
+                                    <td>2 years</td>
+                                    <td>$300</td>
+                                </tr>
+                                <tr>
+                                    <td>Luxury Vehicles</td>
+                                    <td>25 years</td>
+                                    <td>3 years</td>
+                                    <td>$500</td>
+                                </tr>
+                                <tr>
+                                    <td>Sports Cars</td>
+                                    <td>25 years</td>
+                                    <td>3 years</td>
+                                    <td>$750</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Section 3 -->
+                <div class="terms-section" id="rental">
+                    <h2>3. Rental Agreement Terms</h2>
+                    <p>The rental agreement begins when you take possession of the vehicle and ends when the vehicle is returned to the designated location and inspected by DriveRent staff.</p>
+                    
+                    <h3>3.1 Rental Period</h3>
+                    <p>The rental period is calculated in 24-hour increments from the time of pickup. A 59-minute grace period is allowed for returns. Returns more than one hour late will incur additional charges.</p>
+                    
+                    <h3>3.2 Extension of Rental</h3>
+                    <p>If you wish to extend your rental period, you must contact DriveRent at least 24 hours before the scheduled return time. Extensions are subject to vehicle availability and approval.</p>
+                    
+                    <h3>3.3 Vehicle Condition</h3>
+                    <p>You will receive the vehicle in clean condition with a full tank of fuel. You are responsible for returning the vehicle in the same condition, except for normal wear and tear.</p>
+                    
+                    <div class="warning-note">
+                        <strong>Note:</strong> The vehicle must be returned to the agreed location. One-way rentals between certain locations are available at additional cost.
+                    </div>
+                </div>
+                
+                <!-- Section 4 -->
+                <div class="terms-section" id="payments">
+                    <h2>4. Payments and Charges</h2>
+                    <p>You agree to pay all charges associated with your rental, including but not limited to:</p>
+                    
+                    <ul>
+                        <li><strong>Base Rental Rate:</strong> The daily or weekly rate for the vehicle category selected</li>
+                        <li><strong>Taxes and Fees:</strong> All applicable taxes, surcharges, and government fees</li>
+                        <li><strong>Optional Services:</strong> GPS, child seats, additional drivers, etc.</li>
+                        <li><strong>Insurance:</strong> Selected insurance coverage options</li>
+                        <li><strong>Fuel Charges:</strong> If the vehicle is returned with less fuel than at pickup</li>
+                        <li><strong>Late Return Fees:</strong> Charges for returning the vehicle after the agreed time</li>
+                        <li><strong>Additional Mileage:</strong> Charges for mileage exceeding the included limit</li>
+                        <li><strong>Tolls and Violations:</strong> All tolls, parking fines, and traffic violations incurred during the rental period</li>
+                        <li><strong>Cleaning Fees:</strong> If the vehicle is returned excessively dirty</li>
+                        <li><strong>Damage Charges:</strong> For any damage to the vehicle beyond normal wear and tear</li>
+                    </ul>
+                    
+                    <h3>4.1 Security Deposit</h3>
+                    <p>A security deposit will be authorized on your credit/debit card at the time of pickup. The deposit amount varies by vehicle category and will be released upon satisfactory return of the vehicle, typically within 7-14 business days.</p>
+                    
+                    <h3>4.2 Payment Methods</h3>
+                    <p>We accept the following payment methods: Visa, MasterCard, American Express, Discover, PayPal, and cryptocurrency (Bitcoin, Ethereum, USDT). Cash payments are not accepted for security deposits.</p>
+                </div>
+                
+                <!-- Section 5 -->
+                <div class="terms-section" id="insurance">
+                    <h2>5. Insurance and Protection</h2>
+                    <p>DriveRent offers several insurance options to protect you during your rental period:</p>
+                    
+                    <div class="table-container">
+                        <table class="terms-table">
+                            <thead>
+                                <tr>
+                                    <th>Coverage Type</th>
+                                    <th>What's Covered</th>
+                                    <th>Deductible</th>
+                                    <th>Daily Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Basic Insurance</td>
+                                    <td>Collision damage, theft, third-party liability</td>
+                                    <td>$1,000</td>
+                                    <td>$15</td>
+                                </tr>
+                                <tr>
+                                    <td>Premium Insurance</td>
+                                    <td>Full coverage including personal accident protection</td>
+                                    <td>$0</td>
+                                    <td>$25</td>
+                                </tr>
+                                <tr>
+                                    <td>Supplemental Liability</td>
+                                    <td>Additional third-party liability up to $1,000,000</td>
+                                    <td>N/A</td>
+                                    <td>$10</td>
+                                </tr>
+                                <tr>
+                                    <td>Personal Effects</td>
+                                    <td>Coverage for personal belongings in the vehicle</td>
+                                    <td>$50</td>
+                                    <td>$5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> Insurance coverage is void if the vehicle is used in violation of these Terms, including but not limited to driving under the influence, off-road use, or use by unauthorized drivers.</p>
+                    </div>
+                </div>
+                
+                <!-- Section 6 -->
+                <div class="terms-section" id="use">
+                    <h2>6. Permitted Use of Vehicles</h2>
+                    <p>The vehicle may only be used for lawful purposes and must be operated in accordance with all applicable traffic laws and regulations.</p>
+                    
+                    <h3>6.1 Geographic Restrictions</h3>
+                    <p>Vehicles may not be taken outside the country/state without prior written authorization from DriveRent. Some vehicles may have additional geographic restrictions.</p>
+                    
+                    <h3>6.2 Mileage Limitations</h3>
+                    <p>Most rentals include unlimited mileage. However, certain special offers or vehicle categories may have daily mileage limits. Excess mileage charges apply as specified in your rental agreement.</p>
+                    
+                    <h3>6.3 Authorized Drivers</h3>
+                    <p>Only drivers listed on the rental agreement are authorized to operate the vehicle. Additional drivers may be added for a fee, provided they meet all eligibility requirements.</p>
+                </div>
+                
+                <!-- Section 7 -->
+                <div class="terms-section" id="prohibited">
+                    <h2>7. Prohibited Activities</h2>
+                    <p>The following activities are strictly prohibited and may result in immediate termination of the rental agreement, additional charges, and legal action:</p>
+                    
+                    <ul>
+                        <li>Operating the vehicle under the influence of alcohol, drugs, or any intoxicating substances</li>
+                        <li>Using the vehicle for illegal activities, including but not limited to smuggling, transportation of illegal substances, or commission of crimes</li>
+                        <li>Using the vehicle for racing, pace making, speed testing, or driver training</li>
+                        <li>Using the vehicle to tow or push any vehicle, trailer, or other object without prior written authorization</li>
+                        <li>Driving off-road or on unpaved roads (except SUVs specifically authorized for such use)</li>
+                        <li>Using the vehicle for commercial passenger transportation (rideshare services like Uber or Lyft)</li>
+                        <li>Transporting hazardous materials, explosives, or flammable substances</li>
+                        <li>Smoking or vaping inside the vehicle (a $250 cleaning fee will apply if violated)</li>
+                        <li>Transporting pets without prior authorization and payment of pet fee (service animals exempt)</li>
+                        <li>Allowing unauthorized persons to drive the vehicle</li>
+                    </ul>
+                    
+                    <div class="warning-note">
+                        <strong>Important:</strong> Violation of any prohibited activities will void all insurance coverage and may result in additional charges up to the full value of the vehicle.
+                    </div>
+                </div>
+                
+                <!-- Section 8 -->
+                <div class="terms-section" id="damages">
+                    <h2>8. Damages and Liability</h2>
+                    <p>You are responsible for any damage to or loss of the vehicle during the rental period, regardless of fault, except for normal wear and tear.</p>
+                    
+                    <h3>8.1 Accident Procedure</h3>
+                    <p>In the event of an accident, you must:</p>
+                    <ol>
+                        <li>Ensure the safety of all persons involved</li>
+                        <li>Contact local police to file a report</li>
+                        <li>Contact DriveRent immediately at our 24/7 emergency number</li>
+                        <li>Exchange insurance and contact information with other parties</li>
+                        <li>Take photos of the accident scene, vehicle damage, and all relevant documents</li>
+                        <li>Do not admit fault or liability to any party</li>
+                    </ol>
+                    
+                    <h3>8.2 Damage Assessment</h3>
+                    <p>DriveRent will assess any damage to the vehicle upon return. You will be charged for repair costs, loss of use during repairs, and diminished value of the vehicle. The security deposit may be used to cover these charges.</p>
+                </div>
+                
+                <!-- Section 9 -->
+                <div class="terms-section" id="cancellation">
+                    <h2>9. Cancellation Policy</h2>
+                    <p>Our cancellation policy is designed to be fair while ensuring vehicle availability for all customers:</p>
+                    
+                    <div class="table-container">
+                        <table class="terms-table">
+                            <thead>
+                                <tr>
+                                    <th>Cancellation Time</th>
+                                    <th>Refund Amount</th>
+                                    <th>Cancellation Fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>More than 48 hours before pickup</td>
+                                    <td>100% of payment</td>
+                                    <td>No fee</td>
+                                </tr>
+                                <tr>
+                                    <td>24-48 hours before pickup</td>
+                                    <td>50% of payment</td>
+                                    <td>50% of first day's rate</td>
+                                </tr>
+                                <tr>
+                                    <td>Less than 24 hours before pickup</td>
+                                    <td>No refund</td>
+                                    <td>100% of first day's rate</td>
+                                </tr>
+                                <tr>
+                                    <td>No-show (failure to pickup)</td>
+                                    <td>No refund</td>
+                                    <td>100% of first day's rate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>To cancel a reservation, log into your account on our website or contact our customer service. Refunds will be issued to the original payment method within 7-10 business days.</p>
+                </div>
+                
+                <!-- Section 10 -->
+                <div class="terms-section" id="privacy">
+                    <h2>10. Privacy and Data Protection</h2>
+                    <p>We collect and process your personal data in accordance with our Privacy Policy. By using our Services, you consent to such processing and warrant that all data provided by you is accurate.</p>
+                    
+                    <h3>10.1 Data Collection</h3>
+                    <p>We collect information necessary to provide our Services, including but not limited to: name, contact information, driver's license details, payment information, and driving history.</p>
+                    
+                    <h3>10.2 Data Usage</h3>
+                    <p>Your data is used to process your rental, verify your identity, process payments, communicate with you, and improve our Services. We do not sell your personal data to third parties.</p>
+                    
+                    <p>For complete details on how we handle your personal information, please refer to our <a href="privacy.html" style="color: var(--secondary); font-weight: 600;">Privacy Policy</a>.</p>
+                </div>
+                
+                <!-- Section 11 -->
+                <div class="terms-section" id="modifications">
+                    <h2>11. Modifications to Terms</h2>
+                    <p>DriveRent reserves the right to modify these Terms at any time. We will provide notice of significant changes by:</p>
+                    
+                    <ul>
+                        <li>Posting the revised Terms on our website</li>
+                        <li>Sending an email notification to registered users</li>
+                        <li>Displaying a notice within our Services</li>
+                    </ul>
+                    
+                    <p>Your continued use of our Services after such modifications constitutes your acceptance of the revised Terms. If you do not agree to the modified Terms, you must discontinue using our Services.</p>
+                </div>
+                
+                <!-- Section 12 -->
+                <div class="terms-section" id="contact">
+                    <h2>12. Contact Information</h2>
+                    <p>If you have any questions about these Terms, please contact us:</p>
+                    
+                    <div class="definition-list">
+                        <div class="definition-item">
+                            <div class="definition-term">DriveRent Customer Service</div>
+                            <p>Email: legal@driverent.com<br>
+                            Phone: +1 (234) 567-8910<br>
+                            Address: 123 Drive Street, Suite 100, City, State 12345, United States</p>
+                        </div>
+                        
+                        <div class="definition-item">
+                            <div class="definition-term">Hours of Operation</div>
+                            <p>Monday-Friday: 8:00 AM - 8:00 PM EST<br>
+                            Saturday: 9:00 AM - 6:00 PM EST<br>
+                            Sunday: 10:00 AM - 4:00 PM EST</p>
+                        </div>
+                        
+                        <div class="definition-item">
+                            <div class="definition-term">Emergency Support</div>
+                            <p>24/7 Roadside Assistance: +1 (234) 567-8911</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acceptance Section -->
+                <div class="acceptance-section">
+                    <h3>Acceptance of Terms</h3>
+                    <p>By using DriveRent's Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. These Terms constitute the entire agreement between you and DriveRent regarding the subject matter herein.</p>
+                    <p>If you are entering into this agreement on behalf of a company or other legal entity, you represent that you have the authority to bind such entity to these Terms.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveRent</h3>
+                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with excellent customer service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Cars</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms & Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Terms Page Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            if (backToTopBtn) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.style.display = 'flex';
+                    } else {
+                        backToTopBtn.style.display = 'none';
+                    }
+                });
+                
+                // Smooth scroll to top
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Smooth scroll for table of contents links
+            document.querySelectorAll('.toc-list a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                        }
+                        
+                        // Scroll to target
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Add highlight to section
+                        targetElement.style.backgroundColor = '#f0f7ff';
+                        setTimeout(() => {
+                            targetElement.style.backgroundColor = '';
+                        }, 2000);
+                    }
+                });
+            });
+            
+            // Highlight current section in view
+            const sections = document.querySelectorAll('.terms-section');
+            const navLinks = document.querySelectorAll('.toc-list a');
+            
+            function highlightCurrentSection() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                        link.style.color = 'var(--secondary)';
+                        link.style.fontWeight = '600';
+                    } else {
+                        link.style.color = '';
+                        link.style.fontWeight = '';
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+            
+            // Print functionality
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print"></i> Print Terms';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 30px;
+                background-color: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 4px;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            `;
+            
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+            
+            document.body.appendChild(printButton);
+            
+            // Adjust button position on scroll
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    printButton.style.bottom = '90px';
+                } else {
+                    printButton.style.bottom = '30px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

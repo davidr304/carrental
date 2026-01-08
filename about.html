@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - DriveRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-container {
+            padding: 80px 0;
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+        
+        .about-header h1 {
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Mission Section */
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        @media (max-width: 992px) {
+            .mission-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .mission-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .mission-content h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .mission-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Values Section */
+        .values-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary);
+            font-size: 30px;
+        }
+        
+        .value-card h3 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin-bottom: 80px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .member-bio {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .member-social a {
+            width: 35px;
+            height: 35px;
+            background-color: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .member-social a:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            margin-bottom: 80px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+        }
+        
+        .timeline-date {
+            flex: 0 0 150px;
+            text-align: right;
+            padding-right: 30px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-date {
+                text-align: left;
+                padding-left: 60px;
+                margin-bottom: 10px;
+            }
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-content {
+                padding-left: 60px;
+            }
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-content::before {
+                left: 20px;
+            }
+        }
+        
+        .timeline-content h3 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            text-align: left;
+            padding-right: 0;
+            padding-left: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) .timeline-date {
+                padding-left: 60px;
+            }
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-left: 0;
+            padding-right: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) .timeline-content {
+                padding-left: 60px;
+                padding-right: 25px;
+            }
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: auto;
+            right: -10px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) .timeline-content::before {
+                right: auto;
+                left: 20px;
+            }
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Drive<span>Rent</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Cars</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Container -->
+    <section class="about-container">
+        <div class="container">
+            <!-- About Header -->
+            <div class="about-header">
+                <h1>About DriveRent</h1>
+                <p>We are more than just a car rental company. We are your trusted mobility partner, providing reliable vehicles and exceptional service to make every journey memorable.</p>
+            </div>
+            
+            <!-- Mission Section -->
+            <section class="mission-section">
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="DriveRent Mission">
+                </div>
+                <div class="mission-content">
+                    <h2>Our Mission & Vision</h2>
+                    <p>Founded in 2015, DriveRent started with a simple mission: to make car rental accessible, affordable, and hassle-free for everyone. What began as a small fleet of 10 cars has grown into one of the most trusted car rental services with over 500 vehicles across the country.</p>
+                    <p>Our vision is to revolutionize the car rental industry by leveraging technology to provide seamless booking experiences, maintaining the highest standards of vehicle quality, and delivering customer service that exceeds expectations.</p>
+                    
+                    <!-- Stats -->
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Vehicles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50k+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Cities</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Values Section -->
+            <section class="values-section">
+                <div class="section-title">
+                    <h2>Our Core Values</h2>
+                    <p>These principles guide everything we do at DriveRent</p>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety First</h3>
+                        <p>Every vehicle in our fleet undergoes rigorous safety checks and maintenance to ensure your peace of mind on the road.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Customer Trust</h3>
+                        <p>We build lasting relationships through transparency, honesty, and consistently delivering on our promises.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>We embrace technology to streamline processes and enhance your rental experience from booking to return.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainability</h3>
+                        <p>We're committed to reducing our environmental impact through fuel-efficient vehicles and eco-friendly practices.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Team Excellence</h3>
+                        <p>Our dedicated team works together to provide exceptional service and support at every touchpoint.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Quality Assurance</h3>
+                        <p>We maintain the highest standards in vehicle cleanliness, maintenance, and customer service delivery.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Team Section -->
+            <section class="team-section">
+                <div class="section-title">
+                    <h2>Meet Our Leadership Team</h2>
+                    <p>The passionate individuals behind DriveRent's success</p>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="CEO">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Michael Chen</div>
+                            <div class="member-position">CEO & Founder</div>
+                            <div class="member-bio">With 15+ years in the automotive industry, Michael founded DriveRent with a vision to transform car rental experiences.</div>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b786d4d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Operations Director">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Sarah Johnson</div>
+                            <div class="member-position">Operations Director</div>
+                            <div class="member-bio">Sarah oversees all operational aspects, ensuring our fleet is maintained to the highest standards and available when needed.</div>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Technology Head">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">David Park</div>
+                            <div class="member-position">Head of Technology</div>
+                            <div class="member-bio">David leads our tech team in developing innovative solutions that make booking and managing rentals effortless.</div>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Customer Experience">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">Lisa Rodriguez</div>
+                            <div class="member-position">Customer Experience Manager</div>
+                            <div class="member-bio">Lisa ensures every customer interaction is positive and memorable, leading our award-winning support team.</div>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Timeline Section -->
+            <section class="timeline-section">
+                <div class="section-title">
+                    <h2>Our Journey</h2>
+                    <p>Milestones in DriveRent's growth story</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015</div>
+                        <div class="timeline-content">
+                            <h3>Company Founded</h3>
+                            <p>DriveRent was founded with just 10 vehicles and a single location in downtown. Our mission was to provide affordable, reliable rental cars with exceptional service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017</div>
+                        <div class="timeline-content">
+                            <h3>Expansion to 5 Cities</h3>
+                            <p>We expanded our operations to 5 major cities and grew our fleet to 100 vehicles. Introduced our first mobile app for easier booking and management.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019</div>
+                        <div class="timeline-content">
+                            <h3>Technology Integration</h3>
+                            <p>Launched our fully integrated booking platform with real-time availability, digital contracts, and keyless entry technology for select vehicles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <h3>Sustainability Initiative</h3>
+                            <p>Introduced our first electric and hybrid vehicles to the fleet. Partnered with environmental organizations to offset our carbon footprint.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h3>National Recognition</h3>
+                            <p>Awarded "Best Car Rental Service" by National Travel Association. Expanded to 25 cities with over 500 vehicles including luxury and specialty cars.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Experience DriveRent?</h2>
+                    <p>Join thousands of satisfied customers who trust us for their mobility needs. Whether for business, leisure, or special occasions, we have the perfect vehicle for you.</p>
+                    <div class="cta-buttons">
+                        <a href="index.html" class="btn-primary">Browse Our Fleet</a>
+                        <a href="contact.html" class="btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveRent</h3>
+                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with excellent customer service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Cars</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms & Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // About Page Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Animate stats counter
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target;
+                        const target = parseInt(statNumber.textContent);
+                        const suffix = statNumber.textContent.includes('+') ? '+' : '';
+                        const duration = 2000; // 2 seconds
+                        const steps = 60;
+                        const increment = target / steps;
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            statNumber.textContent = Math.floor(current) + suffix;
+                        }, duration / steps);
+                        
+                        observer.unobserve(statNumber);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statNumbers.forEach(statNumber => {
+                observer.observe(statNumber);
+            });
+        });
+    </script>
+</body>
+</html>

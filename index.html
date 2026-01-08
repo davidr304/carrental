@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveRent | Car Rental Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Drive<span>Rent</span></a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#">Cars</a></li>
+                    <li><a href="contact.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find the Perfect Car for Your Journey</h1>
+            <p>Choose from a wide range of vehicles at affordable prices. Book online in minutes and enjoy your ride!
+            </p>
+
+            <div class="search-box">
+                <div class="search-field">
+                    <label for="pickup-location">Pickup Location</label>
+                    <input type="text" id="pickup-location" placeholder="Enter city or airport">
+                </div>
+
+                <div class="search-field">
+                    <label for="pickup-date">Pickup Date</label>
+                    <input type="date" id="pickup-date">
+                </div>
+
+                <div class="search-field">
+                    <label for="return-date">Return Date</label>
+                    <input type="date" id="return-date">
+                </div>
+
+                <button class="search-btn">Search Cars</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Section -->
+    <section class="cars-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Fleet of Vehicles</h2>
+                <p>Choose from our wide selection of vehicles for every need and budget</p>
+            </div>
+
+            <!-- Filter Options -->
+            <div class="filters">
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Cars</button>
+                    <button class="filter-btn" data-filter="economy">Economy</button>
+                    <button class="filter-btn" data-filter="suv">SUV</button>
+                    <button class="filter-btn" data-filter="luxury">Luxury</button>
+                    <button class="filter-btn" data-filter="sports">Sports</button>
+                </div>
+
+                <div class="sort-select">
+                    <select id="sortCars">
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Cars Grid -->
+            <div class="cars-grid" id="carsGrid">
+                <!-- Cars will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-car"></i>
+                    <h3>Wide Selection</h3>
+                    <p>Choose from a variety of vehicles including economy cars, SUVs, luxury sedans, and sports cars.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Best Prices</h3>
+                    <p>We offer competitive pricing with no hidden fees. Price match guarantee on all rentals.</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Fully Insured</h3>
+                    <p>All our rentals come with comprehensive insurance for your peace of mind.</p>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is available around the clock to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveRent</h3>
+                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with
+                        excellent customer service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Cars</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms &
+                        Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize home page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load cars on home page
+            if (document.getElementById('carsGrid')) {
+                const carsGrid = document.getElementById('carsGrid');
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const sortSelect = document.getElementById('sortCars');
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mainNav = document.getElementById('mainNav');
+
+                // Display initial cars
+                displayCars(carsData);
+
+                // Filter functionality
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remove active class from all buttons
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        // Add active class to clicked button
+                        btn.classList.add('active');
+
+                        const filter = btn.getAttribute('data-filter');
+
+                        let filteredCars;
+                        if (filter === 'all') {
+                            filteredCars = carsData;
+                        } else {
+                            filteredCars = carsData.filter(car => car.category === filter);
+                        }
+
+                        // Sort the filtered cars
+                        const sortedCars = sortCars(filteredCars, sortSelect.value);
+                        displayCars(sortedCars);
+                    });
+                });
+
+                // Sort functionality
+                sortSelect.addEventListener('change', () => {
+                    const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+                    let filteredCars;
+                    if (activeFilter === 'all') {
+                        filteredCars = carsData;
+                    } else {
+                        filteredCars = carsData.filter(car => car.category === activeFilter);
+                    }
+
+                    const sortedCars = sortCars(filteredCars, sortSelect.value);
+                    displayCars(sortedCars);
+                });
+
+                // Mobile menu toggle
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+
+                // Function to sort cars based on selected option
+                function sortCars(carsArray, sortBy) {
+                    const sorted = [...carsArray];
+
+                    switch (sortBy) {
+                        case 'price-asc':
+                            return sorted.sort((a, b) => a.price - b.price);
+                        case 'price-desc':
+                            return sorted.sort((a, b) => b.price - a.price);
+                        case 'name-asc':
+                            return sorted.sort((a, b) => a.name.localeCompare(b.name));
+                        case 'name-desc':
+                            return sorted.sort((a, b) => b.name.localeCompare(a.name));
+                        default:
+                            return sorted;
+                    }
+                }
+
+                // Function to display cars in the grid
+                function displayCars(carsArray) {
+                    carsGrid.innerHTML = '';
+
+                    if (carsArray.length === 0) {
+                        carsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; font-size: 18px; color: #666;">No cars found in this category.</p>';
+                        return;
+                    }
+
+                    carsArray.forEach(car => {
+                        const carCard = document.createElement('div');
+                        carCard.className = 'car-card';
+                        carCard.setAttribute('data-category', car.category);
+
+                        carCard.innerHTML = `
+                            <img src="${car.image}" alt="${car.name}" class="car-img">
+                            <div class="car-info">
+                                <div class="car-header">
+                                    <h3 class="car-title">${car.name}</h3>
+                                    <div class="car-price">$${car.price}<span>/day</span></div>
+                                </div>
+                                
+                                <div class="car-details">
+                                    <div class="car-detail">
+                                        <i class="fas fa-user-friends"></i>
+                                        <span>${car.passengers} Passengers</span>
+                                    </div>
+                                    <div class="car-detail">
+                                        <i class="fas fa-cog"></i>
+                                        <span>${car.transmission}</span>
+                                    </div>
+                                    <div class="car-detail">
+                                        <i class="fas fa-gas-pump"></i>
+                                        <span>${car.fuel}</span>
+                                    </div>
+                                </div>
+                                
+                                <a href="car-details.html?id=${car.id}" class="rent-btn">View Details</a>
+                            </div>
+                        `;
+
+                        carsGrid.appendChild(carCard);
+                    });
+                }
+
+                // Set today's date as default for pickup
+                const today = new Date().toISOString().split('T')[0];
+                if (document.getElementById('pickup-date')) {
+                    document.getElementById('pickup-date').value = today;
+                }
+
+                // Set tomorrow's date as default for return
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+                if (document.getElementById('return-date')) {
+                    document.getElementById('return-date').value = tomorrowFormatted;
+                }
+
+                // Set minimum date for pickup to today
+                if (document.getElementById('pickup-date')) {
+                    document.getElementById('pickup-date').min = today;
+                }
+                if (document.getElementById('return-date')) {
+                    document.getElementById('return-date').min = tomorrowFormatted;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

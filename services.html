@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - DriveRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Services Page Specific Styles */
+        .services-container {
+            padding: 80px 0;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .services-header h1 {
+            font-size: 42px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .services-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services Tabs */
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+        
+        .service-tab {
+            padding: 15px 30px;
+            background-color: white;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-tab.active,
+        .service-tab:hover {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .service-tab i {
+            font-size: 20px;
+        }
+        
+        .services-content {
+            margin-bottom: 80px;
+        }
+        
+        .service-content {
+            display: none;
+        }
+        
+        .service-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .service-detail {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .service-icon-large {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 36px;
+        }
+        
+        .service-header h2 {
+            font-size: 32px;
+            color: var(--dark);
+        }
+        
+        .service-description {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h4 {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .feature-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .service-cta {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .service-cta h3 {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .service-cta p {
+            color: #666;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-title {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-period {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-included {
+            color: #2ecc71;
+        }
+        
+        .feature-excluded {
+            color: #e74c3c;
+        }
+        
+        .pricing-button {
+            display: inline-block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .pricing-button:hover {
+            background-color: #1a252f;
+        }
+        
+        .pricing-card.popular .pricing-button {
+            background-color: var(--secondary);
+        }
+        
+        .pricing-card.popular .pricing-button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Additional Services */
+        .additional-services {
+            margin-bottom: 80px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary);
+            font-size: 30px;
+        }
+        
+        .service-card h3 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .service-card-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            border-radius: 8px;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--secondary);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Process Section */
+        .process-section {
+            margin-top: 80px;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #eee;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+        
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-content {
+            text-align: center;
+            max-width: 250px;
+        }
+        
+        .step-content h4 {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Drive<span>Rent</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Cars</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Container -->
+    <section class="services-container">
+        <div class="container">
+            <!-- Services Header -->
+            <div class="services-header">
+                <h1>Our Comprehensive Services</h1>
+                <p>At DriveRent, we offer more than just car rentals. Explore our wide range of services designed to meet all your mobility needs with convenience and flexibility.</p>
+            </div>
+            
+            <!-- Services Tabs -->
+            <div class="services-tabs">
+                <button class="service-tab active" data-service="daily">
+                    <i class="fas fa-car"></i> Daily Rentals
+                </button>
+                <button class="service-tab" data-service="monthly">
+                    <i class="fas fa-calendar-alt"></i> Monthly Rentals
+                </button>
+                <button class="service-tab" data-service="corporate">
+                    <i class="fas fa-briefcase"></i> Corporate Rentals
+                </button>
+                <button class="service-tab" data-service="airport">
+                    <i class="fas fa-plane"></i> Airport Services
+                </button>
+                <button class="service-tab" data-service="chauffeur">
+                    <i class="fas fa-user-tie"></i> Chauffeur Services
+                </button>
+            </div>
+            
+            <!-- Services Content -->
+            <div class="services-content">
+                <!-- Daily Rentals -->
+                <div class="service-content active" id="daily-service">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h2>Daily Car Rentals</h2>
+                        </div>
+                        
+                        <p class="service-description">
+                            Our daily rental service provides flexible, short-term vehicle solutions perfect for business trips, weekend getaways, or any occasion where you need a reliable car for a day or two. With no long-term commitments, you get the freedom to choose exactly when and where you need a vehicle.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Flexible Duration</h4>
+                                    <p>Rent by the hour, day, or week with easy extension options.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-car-side"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Wide Selection</h4>
+                                    <p>Choose from economy cars, SUVs, luxury sedans, or sports cars.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Instant Booking</h4>
+                                    <p>Book online in minutes and pick up your car in as little as 15 minutes.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Full Insurance</h4>
+                                    <p>Comprehensive insurance included with optional premium coverage.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <h3>Need a Car for Today?</h3>
+                            <p>Check real-time availability and book instantly online. Same-day pickup available at most locations.</p>
+                            <a href="index.html" class="cta-button">Browse Available Cars</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Monthly Rentals -->
+                <div class="service-content" id="monthly-service">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h2>Monthly Car Rentals</h2>
+                        </div>
+                        
+                        <p class="service-description">
+                            Perfect for extended stays, temporary vehicle needs, or while your car is being repaired. Our monthly rental program offers significant savings compared to daily rates, with all the flexibility of a short-term rental. Ideal for business projects, temporary relocations, or long vacations.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Cost-Effective</h4>
+                                    <p>Save up to 40% compared to daily rates with monthly discounts.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Flexible Terms</h4>
+                                    <p>Rent for 30, 60, or 90+ days with easy cancellation options.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Maintenance Included</h4>
+                                    <p>All routine maintenance and servicing included in your rental.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Vehicle Exchange</h4>
+                                    <p>Option to exchange vehicles during your rental period if needed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <h3>Long-Term Rental Solutions</h3>
+                            <p>Get custom quotes for monthly rentals with special corporate and long-term discounts.</p>
+                            <a href="contact.html" class="cta-button">Request Monthly Quote</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Corporate Rentals -->
+                <div class="service-content" id="corporate-service">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h2>Corporate Car Rentals</h2>
+                        </div>
+                        
+                        <p class="service-description">
+                            Tailored solutions for businesses of all sizes. Our corporate rental program offers streamlined billing, dedicated account management, and special rates for frequent business travelers. Manage your entire fleet through our corporate portal with detailed reporting and expense tracking.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Volume Discounts</h4>
+                                    <p>Special corporate rates based on your company's rental volume.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Consolidated Billing</h4>
+                                    <p>Monthly invoices with detailed breakdowns for easy expense management.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-headset"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Dedicated Support</h4>
+                                    <p>24/7 priority support and dedicated account manager for your business.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Employee Portal</h4>
+                                    <p>Custom booking portal for your employees with pre-approved budgets.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <h3>Corporate Partnership Program</h3>
+                            <p>Join hundreds of companies that trust DriveRent for their business transportation needs.</p>
+                            <a href="contact.html" class="cta-button">Set Up Corporate Account</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Airport Services -->
+                <div class="service-content" id="airport-service">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <h2>Airport Car Rental Services</h2>
+                        </div>
+                        
+                        <p class="service-description">
+                            Convenient pick-up and drop-off at major airports nationwide. Skip the rental counter lines with our express service - your car will be waiting for you when you arrive. Perfect for business travelers and vacationers who want to hit the road immediately upon landing.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Airport Locations</h4>
+                                    <p>Service available at all major international and domestic airports.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Express Service</h4>
+                                    <p>Pre-check-in online and go straight to your vehicle upon arrival.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-suitcase"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Luggage Assistance</h4>
+                                    <p>Help with luggage loading and unloading at airport locations.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Flight Tracking</h4>
+                                    <p>We track your flight and adjust pickup times for delayed arrivals.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <h3>Ready for Your Next Trip?</h3>
+                            <p>Book your airport rental in advance and enjoy a seamless travel experience.</p>
+                            <a href="index.html" class="cta-button">Book Airport Rental</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chauffeur Services -->
+                <div class="service-content" id="chauffeur-service">
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h2>Professional Chauffeur Services</h2>
+                        </div>
+                        
+                        <p class="service-description">
+                            Travel in style and comfort with our professional chauffeur service. Perfect for business meetings, special occasions, airport transfers, or when you simply want to relax and leave the driving to a professional. Our chauffeurs are thoroughly vetted, professionally trained, and knowledgeable about local routes.
+                        </p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Professional Drivers</h4>
+                                    <p>Licensed, experienced chauffeurs with impeccable service records.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Luxury Fleet</h4>
+                                    <p>Choose from luxury sedans, SUVs, or executive vans for groups.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-concierge-bell"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Concierge Service</h4>
+                                    <p>Personalized service including restaurant reservations and itinerary planning.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>Amenities Included</h4>
+                                    <p>Complimentary WiFi, bottled water, phone chargers, and newspapers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <h3>Experience Premium Travel</h3>
+                            <p>Book a chauffeur for your next important event or business meeting.</p>
+                            <a href="contact.html" class="cta-button">Request Chauffeur Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing Section -->
+            <section class="pricing-section">
+                <div class="section-title">
+                    <h2>Transparent Pricing</h2>
+                    <p>Choose the perfect rental plan for your needs with our straightforward pricing</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Daily Basic</h3>
+                            <div class="pricing-price">$39<span class="pricing-period">/day</span></div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check feature-included"></i> Economy Car</li>
+                            <li><i class="fas fa-check feature-included"></i> 100 Miles/Day</li>
+                            <li><i class="fas fa-check feature-included"></i> Basic Insurance</li>
+                            <li><i class="fas fa-times feature-excluded"></i> Additional Driver</li>
+                            <li><i class="fas fa-times feature-excluded"></i> GPS Navigation</li>
+                            <li><i class="fas fa-times feature-excluded"></i> Airport Pickup</li>
+                        </ul>
+                        
+                        <a href="booking.html" class="pricing-button">Book Now</a>
+                    </div>
+                    
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Daily Premium</h3>
+                            <div class="pricing-price">$69<span class="pricing-period">/day</span></div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check feature-included"></i> Mid-size SUV</li>
+                            <li><i class="fas fa-check feature-included"></i> Unlimited Miles</li>
+                            <li><i class="fas fa-check feature-included"></i> Premium Insurance</li>
+                            <li><i class="fas fa-check feature-included"></i> Additional Driver</li>
+                            <li><i class="fas fa-check feature-included"></i> GPS Navigation</li>
+                            <li><i class="fas fa-times feature-excluded"></i> Airport Pickup</li>
+                        </ul>
+                        
+                        <a href="booking.html" class="pricing-button">Book Now</a>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Business Elite</h3>
+                            <div class="pricing-price">$99<span class="pricing-period">/day</span></div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check feature-included"></i> Luxury Sedan</li>
+                            <li><i class="fas fa-check feature-included"></i> Unlimited Miles</li>
+                            <li><i class="fas fa-check feature-included"></i> Full Coverage</li>
+                            <li><i class="fas fa-check feature-included"></i> Additional Driver</li>
+                            <li><i class="fas fa-check feature-included"></i> GPS Navigation</li>
+                            <li><i class="fas fa-check feature-included"></i> Airport Pickup</li>
+                        </ul>
+                        
+                        <a href="booking.html" class="pricing-button">Book Now</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Additional Services -->
+            <section class="additional-services">
+                <div class="section-title">
+                    <h2>Additional Services</h2>
+                    <p>Enhance your rental experience with these optional services</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Child Safety Seats</h3>
+                        <p>Properly installed child seats for infants and toddlers. Meets all safety standards.</p>
+                        <div class="service-card-price">$8/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>GPS Navigation</h3>
+                        <p>Never get lost with our advanced GPS systems with real-time traffic updates.</p>
+                        <div class="service-card-price">$10/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3>Toll Pass</h3>
+                        <p>Electronic toll payment device for convenient travel on toll roads and bridges.</p>
+                        <div class="service-card-price">$7/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-snowboarding"></i>
+                        </div>
+                        <h3>Ski/Snowboard Racks</h3>
+                        <p>Secure racks for winter sports equipment. Available seasonally at mountain locations.</p>
+                        <div class="service-card-price">$15/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Mobile WiFi</h3>
+                        <p>Stay connected on the go with high-speed mobile internet for all your devices.</p>
+                        <div class="service-card-price">$12/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <h3>Fuel Service</h3>
+                        <p>Return the car with any fuel level and we'll refuel it for a competitive rate.</p>
+                        <div class="service-card-price">Market Price + $5</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Additional Driver</h3>
+                        <p>Add an extra driver to your rental agreement. All drivers must meet requirements.</p>
+                        <div class="service-card-price">$12/day</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Roadside Assistance</h3>
+                        <p>24/7 roadside assistance for peace of mind during your rental period.</p>
+                        <div class="service-card-price">$5/day</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Rental Process -->
+            <section class="process-section">
+                <div class="section-title">
+                    <h2>Simple Rental Process</h2>
+                    <p>Renting a car with DriveRent is quick and easy</p>
+                </div>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Book Online</h4>
+                            <p>Select your vehicle, dates, and extras through our website or mobile app.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Verify & Pay</h4>
+                            <p>Complete your booking by verifying your details and making payment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Pick Up</h4>
+                            <p>Collect your vehicle at the chosen location with all required documents.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Enjoy & Return</h4>
+                            <p>Enjoy your rental and return the vehicle at the agreed time and location.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="section-title">
+                    <h2>Service FAQs</h2>
+                    <p>Common questions about our rental services</p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I modify or cancel my reservation?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can modify or cancel your reservation free of charge up to 24 hours before your scheduled pickup time. Changes or cancellations within 24 hours may incur a fee. You can manage your reservation through your online account or by contacting our customer service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What happens if I return the car late?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We provide a 59-minute grace period after your scheduled return time. If you return the car more than one hour late, additional charges will apply at the standard daily rate. If you know you'll be late, please contact us as soon as possible to extend your rental period.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer one-way rentals?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer one-way rentals between most locations. Additional fees may apply depending on the distance between pickup and drop-off locations. Please check availability and pricing when making your reservation or contact our customer service for specific one-way rental options.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I rent a car without a credit card?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While we prefer credit cards for security deposits, we also accept debit cards and certain digital payment methods. Additional verification may be required for non-credit card payments. Contact our customer service team to discuss alternative payment options for your rental.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is included in the rental price?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our base rental price includes the vehicle, basic insurance coverage, and standard roadside assistance. Additional charges may apply for optional services like GPS, child seats, additional drivers, and premium insurance. All applicable taxes and fees are clearly displayed during the booking process.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveRent</h3>
+                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with excellent customer service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Cars</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms & Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Services Page Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Services Tabs
+            const serviceTabs = document.querySelectorAll('.service-tab');
+            const serviceContents = document.querySelectorAll('.service-content');
+            
+            serviceTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const serviceId = this.getAttribute('data-service');
+                    
+                    // Update active tab
+                    serviceTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    serviceContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${serviceId}-service`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    
+                    // Toggle active class
+                    faqItem.classList.toggle('active');
+                    
+                    // Toggle answer visibility
+                    if (faqItem.classList.contains('active')) {
+                        answer.classList.add('active');
+                    } else {
+                        answer.classList.remove('active');
+                    }
+                    
+                    // Close other FAQ items
+                    faqQuestions.forEach(otherQuestion => {
+                        const otherFaqItem = otherQuestion.parentElement;
+                        const otherAnswer = otherFaqItem.querySelector('.faq-answer');
+                        
+                        if (otherFaqItem !== faqItem && otherFaqItem.classList.contains('active')) {
+                            otherFaqItem.classList.remove('active');
+                            otherAnswer.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Car - DriveRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Booking Page Specific Styles */
+        .booking-container {
+            padding: 80px 0;
+        }
+        
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #eee;
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--gray);
+            border: 3px solid white;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .step.completed .step-number {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .step-label {
+            font-weight: 600;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .step.active .step-label {
+            color: var(--secondary);
+        }
+        
+        .step.completed .step-label {
+            color: #2ecc71;
+        }
+        
+        .booking-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        @media (max-width: 992px) {
+            .booking-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .booking-summary {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .car-summary {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .car-summary-image {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .car-summary-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .car-summary-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .price-breakdown {
+            margin: 30px 0;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .price-item.total {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .booking-form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-section-title {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group.required label::after {
+            content: ' *';
+            color: var(--secondary);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .date-range-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .rental-days-display {
+            grid-column: 1 / -1;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn-back {
+            background-color: #f1f1f1;
+            color: var(--dark);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-back:hover {
+            background-color: #e1e1e1;
+        }
+        
+        .btn-continue {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-continue:hover {
+            background-color: #c0392b;
+        }
+        
+        .insurance-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .insurance-option {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .insurance-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        
+        .insurance-option input {
+            display: none;
+        }
+        
+        .insurance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .insurance-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .insurance-price {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .insurance-desc {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .addons-section {
+            margin-top: 20px;
+        }
+        
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .addon-item:last-child {
+            border-bottom: none;
+        }
+        
+        .addon-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .addon-checkbox {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .addon-price {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .price-update-notice {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        /* Price Calculation Animation */
+        .calculating {
+            color: #ffc107;
+            font-style: italic;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+        
+        .error-message {
+            color: var(--secondary);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error {
+            border-color: var(--secondary) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Drive<span>Rent</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Cars</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="login-btn">Login</a>
+                <a href="#" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Booking Container -->
+    <section class="booking-container">
+        <div class="container">
+            <!-- Booking Steps -->
+            <div class="booking-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Booking Details</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Payment</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+            </div>
+            
+            <div class="booking-content">
+                <!-- Booking Form -->
+                <div class="booking-form-section">
+                    <h2 class="form-section-title">Booking Details</h2>
+                    
+                    <form id="bookingForm">
+                        <div class="form-grid">
+                            <!-- Rental Dates -->
+                            <div class="form-group full-width">
+                                <h3 style="margin-bottom: 15px; color: var(--dark);">Rental Period</h3>
+                                <div class="date-range-selector">
+                                    <div class="form-group required">
+                                        <label for="pickupDate">Pickup Date</label>
+                                        <input type="date" id="pickupDate" name="pickupDate" required>
+                                        <div class="error-message" id="pickupDateError">Please select a valid pickup date</div>
+                                    </div>
+                                    
+                                    <div class="form-group required">
+                                        <label for="returnDate">Return Date</label>
+                                        <input type="date" id="returnDate" name="returnDate" required>
+                                        <div class="error-message" id="returnDateError">Please select a valid return date</div>
+                                    </div>
+                                    
+                                    <div class="rental-days-display">
+                                        Rental Period: <span id="rentalDays">0</span> days
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Personal Information -->
+                            <div class="form-group full-width">
+                                <h3 style="margin-bottom: 15px; color: var(--dark);">Personal Information</h3>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <div class="error-message" id="firstNameError">Please enter your first name</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <div class="error-message" id="lastNameError">Please enter your last name</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="address">Street Address</label>
+                                <input type="text" id="address" name="address" required>
+                                <div class="error-message" id="addressError">Please enter your address</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                                <div class="error-message" id="cityError">Please enter your city</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" name="state" required>
+                                <div class="error-message" id="stateError">Please enter your state/province</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="zipCode">ZIP/Postal Code</label>
+                                <input type="text" id="zipCode" name="zipCode" required>
+                                <div class="error-message" id="zipCodeError">Please enter your ZIP/postal code</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="country">Country</label>
+                                <select id="country" name="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="IN">India</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="JP">Japan</option>
+                                </select>
+                                <div class="error-message" id="countryError">Please select your country</div>
+                            </div>
+                            
+                            <!-- Driver's License -->
+                            <div class="form-group full-width">
+                                <h3 style="margin-bottom: 15px; color: var(--dark);">Driver's License Information</h3>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="licenseNumber">Driver's License Number</label>
+                                <input type="text" id="licenseNumber" name="licenseNumber" required>
+                                <div class="error-message" id="licenseNumberError">Please enter your driver's license number</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="licenseCountry">Issuing Country</label>
+                                <input type="text" id="licenseCountry" name="licenseCountry" required>
+                                <div class="error-message" id="licenseCountryError">Please enter issuing country</div>
+                            </div>
+                            
+                            <div class="form-group required">
+                                <label for="licenseExpiry">Expiry Date</label>
+                                <input type="date" id="licenseExpiry" name="licenseExpiry" required>
+                                <div class="error-message" id="licenseExpiryError">Please enter expiry date</div>
+                            </div>
+                            
+                            <!-- Insurance Options -->
+                            <div class="form-group full-width">
+                                <h3 style="margin-bottom: 15px; color: var(--dark);">Insurance Options</h3>
+                                <div class="insurance-options">
+                                    <div class="insurance-option selected" data-value="basic">
+                                        <div class="insurance-header">
+                                            <div class="insurance-name">Basic Insurance</div>
+                                            <div class="insurance-price">$15/day</div>
+                                        </div>
+                                        <div class="insurance-desc">Standard coverage with $1000 deductible</div>
+                                    </div>
+                                    
+                                    <div class="insurance-option" data-value="premium">
+                                        <div class="insurance-header">
+                                            <div class="insurance-name">Premium Insurance</div>
+                                            <div class="insurance-price">$25/day</div>
+                                        </div>
+                                        <div class="insurance-desc">Full coverage with $0 deductible</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="insuranceType" name="insuranceType" value="basic">
+                            </div>
+                            
+                            <!-- Additional Services -->
+                            <div class="form-group full-width addons-section">
+                                <h3 style="margin-bottom: 15px; color: var(--dark);">Additional Services</h3>
+                                
+                                <div class="addon-item">
+                                    <div class="addon-info">
+                                        <input type="checkbox" id="gps" class="addon-checkbox" data-price="10" data-name="GPS Navigation">
+                                        <label for="gps" style="cursor: pointer;">
+                                            <strong>GPS Navigation System</strong><br>
+                                            <small>Never get lost with our advanced GPS</small>
+                                        </label>
+                                    </div>
+                                    <div class="addon-price">$10/day</div>
+                                </div>
+                                
+                                <div class="addon-item">
+                                    <div class="addon-info">
+                                        <input type="checkbox" id="childSeat" class="addon-checkbox" data-price="8" data-name="Child Safety Seat">
+                                        <label for="childSeat" style="cursor: pointer;">
+                                            <strong>Child Safety Seat</strong><br>
+                                            <small>For children up to 8 years old</small>
+                                        </label>
+                                    </div>
+                                    <div class="addon-price">$8/day</div>
+                                </div>
+                                
+                                <div class="addon-item">
+                                    <div class="addon-info">
+                                        <input type="checkbox" id="additionalDriver" class="addon-checkbox" data-price="12" data-name="Additional Driver">
+                                        <label for="additionalDriver" style="cursor: pointer;">
+                                            <strong>Additional Driver</strong><br>
+                                            <small>Add another driver to the rental</small>
+                                        </label>
+                                    </div>
+                                    <div class="addon-price">$12/day</div>
+                                </div>
+                                
+                                <div class="addon-item">
+                                    <div class="addon-info">
+                                        <input type="checkbox" id="tollPass" class="addon-checkbox" data-price="7" data-name="Toll Pass">
+                                        <label for="tollPass" style="cursor: pointer;">
+                                            <strong>Toll Pass</strong><br>
+                                            <small>Electronic toll payment device</small>
+                                        </label>
+                                    </div>
+                                    <div class="addon-price">$7/day</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Special Requests -->
+                            <div class="form-group full-width">
+                                <label for="specialRequests">Special Requests (Optional)</label>
+                                <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requests or instructions..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <a href="car-details.html?id=1" class="btn-back">
+                                <i class="fas fa-arrow-left"></i> Back to Car
+                            </a>
+                            <button type="button" class="btn-continue" id="continueToPayment">
+                                Continue to Payment <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Booking Summary -->
+                <div class="booking-summary">
+                    <h2 style="font-size: 24px; color: var(--dark); margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee;">Booking Summary</h2>
+                    
+                    <!-- Car Summary -->
+                    <div class="car-summary">
+                        <img id="summaryCarImage" src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Car" class="car-summary-image">
+                        <div class="car-summary-info">
+                            <h3 id="summaryCarName">Toyota Camry</h3>
+                            <div class="car-summary-details">
+                                <span><i class="fas fa-user-friends"></i> <span id="summaryPassengers">5</span> Passengers</span>
+                                <span><i class="fas fa-cog"></i> <span id="summaryTransmission">Automatic</span></span>
+                                <span><i class="fas fa-gas-pump"></i> <span id="summaryFuel">Hybrid</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Breakdown -->
+                    <div class="price-breakdown">
+                        <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 20px;">Price Breakdown</h3>
+                        
+                        <div class="price-item">
+                            <span>Base Rate (<span id="summaryDays">1</span> days × $<span id="summaryDailyRate">45</span>/day)</span>
+                            <span>$<span id="summaryBasePrice">45.00</span></span>
+                        </div>
+                        
+                        <div class="price-item">
+                            <span>Insurance (<span id="summaryDays2">1</span> days × $<span id="summaryInsuranceRate">15</span>/day)</span>
+                            <span>$<span id="summaryInsurancePrice">15.00</span></span>
+                        </div>
+                        
+                        <div class="price-item" id="addonsContainer">
+                            <!-- Add-ons will be added here dynamically -->
+                        </div>
+                        
+                        <div class="price-item">
+                            <span>Service Fee</span>
+                            <span>$<span id="summaryServiceFee">10.00</span></span>
+                        </div>
+                        
+                        <div class="price-item">
+                            <span>Taxes & Fees (8%)</span>
+                            <span>$<span id="summaryTaxes">5.60</span></span>
+                        </div>
+                        
+                        <!-- Discount -->
+                        <div class="price-item" id="discountItem" style="display: none;">
+                            <span>Discount <span class="discount-badge" id="discountBadge">10% OFF</span></span>
+                            <span>-$<span id="summaryDiscount">0.00</span></span>
+                        </div>
+                        
+                        <!-- Total -->
+                        <div class="price-item total">
+                            <span>Total Amount</span>
+                            <span>$<span id="summaryTotal">75.60</span></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Discount Code -->
+                    <div class="form-group" style="margin-top: 25px;">
+                        <label for="discountCode">Have a discount code?</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="discountCode" placeholder="Enter code">
+                            <button type="button" id="applyDiscount" style="background-color: var(--primary); color: white; border: none; padding: 0 15px; border-radius: 4px; cursor: pointer;">Apply</button>
+                        </div>
+                        <div id="discountMessage" style="font-size: 14px; margin-top: 5px;"></div>
+                    </div>
+                    
+                    <!-- Price Update Notice -->
+                    <div class="price-update-notice" id="priceUpdateNotice" style="display: none;">
+                        <i class="fas fa-sync-alt"></i> Price updated based on your selection
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveRent</h3>
+                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with excellent customer service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Cars</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms & Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Booking Page Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get car ID from URL or default to 1
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = parseInt(urlParams.get('id')) || 1;
+            
+            // Find car in data
+            const car = getCarById(carId);
+            
+            // Initialize booking page
+            initBookingPage(car);
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+            
+            // Set minimum dates
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const pickupDateInput = document.getElementById('pickupDate');
+            const returnDateInput = document.getElementById('returnDate');
+            const licenseExpiryInput = document.getElementById('licenseExpiry');
+            
+            pickupDateInput.min = formatDateForInput(today);
+            returnDateInput.min = formatDateForInput(tomorrow);
+            licenseExpiryInput.min = formatDateForInput(today);
+            
+            // Set default dates
+            pickupDateInput.value = formatDateForInput(tomorrow);
+            returnDateInput.value = formatDateForInput(new Date(tomorrow.getTime() + 3 * 24 * 60 * 60 * 1000));
+            
+            // Update rental days when dates change
+            pickupDateInput.addEventListener('change', updateRentalDays);
+            returnDateInput.addEventListener('change', updateRentalDays);
+            
+            // Initialize rental days
+            updateRentalDays();
+            
+            // Insurance option selection
+            document.querySelectorAll('.insurance-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.insurance-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    document.getElementById('insuranceType').value = this.getAttribute('data-value');
+                    updatePriceCalculation();
+                });
+            });
+            
+            // Add-ons selection
+            document.querySelectorAll('.addon-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', updatePriceCalculation);
+            });
+            
+            // Discount code application
+            document.getElementById('applyDiscount').addEventListener('click', applyDiscountCode);
+            document.getElementById('discountCode').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    applyDiscountCode();
+                    e.preventDefault();
+                }
+            });
+            
+            // Form validation and submission
+            document.getElementById('continueToPayment').addEventListener('click', validateAndSubmitForm);
+            
+            // Initialize form validation
+            initFormValidation();
+        });
+        
+        function formatDateForInput(date) {
+            return date.toISOString().split('T')[0];
+        }
+        
+        function initBookingPage(car) {
+            // Update car details in summary
+            document.getElementById('summaryCarImage').src = car.image;
+            document.getElementById('summaryCarName').textContent = car.name;
+            document.getElementById('summaryPassengers').textContent = car.passengers;
+            document.getElementById('summaryTransmission').textContent = car.transmission;
+            document.getElementById('summaryFuel').textContent = car.fuel;
+            document.getElementById('summaryDailyRate').textContent = car.price;
+            
+            // Set car ID in hidden field if needed
+            if (!document.getElementById('carId')) {
+                const carIdInput = document.createElement('input');
+                carIdInput.type = 'hidden';
+                carIdInput.id = 'carId';
+                carIdInput.name = 'carId';
+                carIdInput.value = car.id;
+                document.getElementById('bookingForm').appendChild(carIdInput);
+            }
+            
+            // Initial price calculation
+            updatePriceCalculation();
+        }
+        
+        function updateRentalDays() {
+            const pickupDate = new Date(document.getElementById('pickupDate').value);
+            const returnDate = new Date(document.getElementById('returnDate').value);
+            
+            // Validate dates
+            if (pickupDate >= returnDate) {
+                document.getElementById('returnDateError').textContent = 'Return date must be after pickup date';
+                document.getElementById('returnDateError').style.display = 'block';
+                document.getElementById('returnDate').classList.add('error');
+                document.getElementById('rentalDays').textContent = '0';
+                document.getElementById('summaryDays').textContent = '0';
+                document.getElementById('summaryDays2').textContent = '0';
+                updatePriceCalculation();
+                return;
+            } else {
+                document.getElementById('returnDateError').style.display = 'none';
+                document.getElementById('returnDate').classList.remove('error');
+            }
+            
+            // Calculate days
+            const timeDiff = returnDate.getTime() - pickupDate.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            document.getElementById('rentalDays').textContent = daysDiff;
+            document.getElementById('summaryDays').textContent = daysDiff;
+            document.getElementById('summaryDays2').textContent = daysDiff;
+            
+            updatePriceCalculation();
+        }
+        
+        function updatePriceCalculation() {
+            // Show calculating state
+            document.getElementById('summaryBasePrice').textContent = 'calculating...';
+            document.getElementById('summaryBasePrice').classList.add('calculating', 'pulse');
+            
+            // Get values
+            const carId = parseInt(document.getElementById('carId')?.value) || 1;
+            const car = getCarById(carId);
+            const dailyRate = car.price;
+            
+            const days = parseInt(document.getElementById('rentalDays').textContent) || 0;
+            const insuranceType = document.getElementById('insuranceType').value;
+            const insuranceRate = insuranceType === 'premium' ? 25 : 15;
+            
+            // Calculate base price
+            const basePrice = dailyRate * days;
+            
+            // Calculate insurance price
+            const insurancePrice = insuranceRate * days;
+            
+            // Calculate add-ons
+            let addonsPrice = 0;
+            let addonsHTML = '';
+            const selectedAddons = [];
+            
+            document.querySelectorAll('.addon-checkbox:checked').forEach(checkbox => {
+                const addonPrice = parseFloat(checkbox.getAttribute('data-price'));
+                const addonName = checkbox.getAttribute('data-name');
+                const addonTotal = addonPrice * days;
+                
+                addonsPrice += addonTotal;
+                selectedAddons.push({ name: addonName, price: addonTotal });
+                
+                addonsHTML += `
+                    <div class="price-item">
+                        <span>${addonName}</span>
+                        <span>$${addonTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            // Service fee (fixed)
+            const serviceFee = 10;
+            
+            // Subtotal before discount
+            const subtotal = basePrice + insurancePrice + addonsPrice + serviceFee;
+            
+            // Apply discount if any
+            let discountAmount = 0;
+            const discountPercentage = window.currentDiscount?.percentage || 0;
+            
+            if (discountPercentage > 0) {
+                discountAmount = (subtotal * discountPercentage) / 100;
+            }
+            
+            // Amount after discount
+            const amountAfterDiscount = subtotal - discountAmount;
+            
+            // Calculate taxes (8% of amount after discount)
+            const taxes = amountAfterDiscount * 0.08;
+            
+            // Final total
+            const total = amountAfterDiscount + taxes;
+            
+            // Update display with animation
+            setTimeout(() => {
+                document.getElementById('summaryBasePrice').textContent = basePrice.toFixed(2);
+                document.getElementById('summaryBasePrice').classList.remove('calculating', 'pulse');
+                
+                document.getElementById('summaryInsuranceRate').textContent = insuranceRate;
+                document.getElementById('summaryInsurancePrice').textContent = insurancePrice.toFixed(2);
+                
+                const addonsContainer = document.getElementById('addonsContainer');
+                if (selectedAddons.length > 0) {
+                    addonsContainer.innerHTML = addonsHTML;
+                } else {
+                    addonsContainer.innerHTML = '';
+                }
+                
+                document.getElementById('summaryServiceFee').textContent = serviceFee.toFixed(2);
+                document.getElementById('summaryTaxes').textContent = taxes.toFixed(2);
+                
+                // Update discount display
+                const discountItem = document.getElementById('discountItem');
+                if (discountAmount > 0) {
+                    discountItem.style.display = 'flex';
+                    document.getElementById('summaryDiscount').textContent = discountAmount.toFixed(2);
+                    
+                    // Update discount badge text
+                    const discountBadge = document.getElementById('discountBadge');
+                    if (window.currentDiscount) {
+                        discountBadge.textContent = `${discountPercentage}% OFF`;
+                    }
+                } else {
+                    discountItem.style.display = 'none';
+                }
+                
+                document.getElementById('summaryTotal').textContent = total.toFixed(2);
+                
+                // Show price update notice
+                const notice = document.getElementById('priceUpdateNotice');
+                notice.style.display = 'block';
+                setTimeout(() => {
+                    notice.style.display = 'none';
+                }, 3000);
+                
+            }, 500); // Simulate calculation delay
+        }
+        
+        function applyDiscountCode() {
+            const codeInput = document.getElementById('discountCode');
+            const code = codeInput.value.trim().toUpperCase();
+            const messageDiv = document.getElementById('discountMessage');
+            
+            // Define valid discount codes
+            const validCodes = {
+                'WELCOME10': { percentage: 10, message: '10% discount applied!' },
+                'SUMMER20': { percentage: 20, message: '20% summer discount applied!' },
+                'FIRST25': { percentage: 25, message: '25% first-time booking discount!' },
+                'DRIVERENT15': { percentage: 15, message: '15% loyalty discount applied!' }
+            };
+            
+            if (code === '') {
+                messageDiv.style.color = 'var(--secondary)';
+                messageDiv.textContent = 'Please enter a discount code';
+                return;
+            }
+            
+            if (validCodes[code]) {
+                window.currentDiscount = validCodes[code];
+                messageDiv.style.color = '#2ecc71';
+                messageDiv.textContent = validCodes[code].message;
+                codeInput.disabled = true;
+                document.getElementById('applyDiscount').textContent = 'Applied';
+                document.getElementById('applyDiscount').disabled = true;
+                document.getElementById('applyDiscount').style.backgroundColor = '#2ecc71';
+                
+                // Update price calculation
+                updatePriceCalculation();
+            } else {
+                window.currentDiscount = null;
+                messageDiv.style.color = 'var(--secondary)';
+                messageDiv.textContent = 'Invalid discount code';
+            }
+        }
+        
+        function initFormValidation() {
+            // Get all required inputs
+            const requiredInputs = document.querySelectorAll('.form-group.required input, .form-group.required select');
+            
+            // Add blur event listeners for validation
+            requiredInputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                // Clear error on input
+                input.addEventListener('input', function() {
+                    clearError(this);
+                });
+            });
+            
+            // Special validation for email
+            const emailInput = document.getElementById('email');
+            emailInput.addEventListener('blur', function() {
+                if (this.value && !isValidEmail(this.value)) {
+                    showError(this, 'Please enter a valid email address');
+                }
+            });
+            
+            // Special validation for phone
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('blur', function() {
+                if (this.value && !isValidPhone(this.value)) {
+                    showError(this, 'Please enter a valid phone number');
+                }
+            });
+            
+            // Date validation
+            const pickupDate = document.getElementById('pickupDate');
+            const returnDate = document.getElementById('returnDate');
+            
+            pickupDate.addEventListener('change', function() {
+                const today = new Date().toISOString().split('T')[0];
+                if (this.value < today) {
+                    showError(this, 'Pickup date cannot be in the past');
+                }
+            });
+            
+            returnDate.addEventListener('change', function() {
+                const pickup = new Date(pickupDate.value);
+                const ret = new Date(this.value);
+                
+                if (ret <= pickup) {
+                    showError(this, 'Return date must be after pickup date');
+                }
+            });
+        }
+        
+        function validateField(field) {
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                const fieldName = field.previousElementSibling?.textContent.replace(' *', '') || 'This field';
+                showError(field, `${fieldName} is required`);
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function showError(field, message) {
+            field.classList.add('error');
+            const errorDiv = field.parentElement.querySelector('.error-message');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+        
+        function clearError(field) {
+            field.classList.remove('error');
+            const errorDiv = field.parentElement.querySelector('.error-message');
+            if (errorDiv) {
+                errorDiv.style.display = 'none';
+            }
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function isValidPhone(phone) {
+            // Simple phone validation - at least 10 digits
+            const phoneDigits = phone.replace(/\D/g, '');
+            return phoneDigits.length >= 10;
+        }
+        
+        function validateAndSubmitForm() {
+            // Validate all required fields
+            let isValid = true;
+            const requiredInputs = document.querySelectorAll('.form-group.required input, .form-group.required select');
+            
+            requiredInputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            
+            // Validate dates
+            const pickupDate = new Date(document.getElementById('pickupDate').value);
+            const returnDate = new Date(document.getElementById('returnDate').value);
+            
+            if (pickupDate >= returnDate) {
+                showError(document.getElementById('returnDate'), 'Return date must be after pickup date');
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailInput = document.getElementById('email');
+            if (emailInput.value && !isValidEmail(emailInput.value)) {
+                showError(emailInput, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate phone
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput.value && !isValidPhone(phoneInput.value)) {
+                showError(phoneInput, 'Please enter a valid phone number');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                // Scroll to first error
+                const firstError = document.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+            
+            // All validation passed - collect data and proceed to payment
+            collectBookingDataAndProceed();
+        }
+        
+        function collectBookingDataAndProceed() {
+            // Collect all form data
+            const formData = {
+                carId: document.getElementById('carId').value,
+                carName: document.getElementById('summaryCarName').textContent,
+                pickupDate: document.getElementById('pickupDate').value,
+                returnDate: document.getElementById('returnDate').value,
+                rentalDays: parseInt(document.getElementById('rentalDays').textContent),
+                
+                // Personal info
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                country: document.getElementById('country').value,
+                
+                // License info
+                licenseNumber: document.getElementById('licenseNumber').value,
+                licenseCountry: document.getElementById('licenseCountry').value,
+                licenseExpiry: document.getElementById('licenseExpiry').value,
+                
+                // Insurance
+                insuranceType: document.getElementById('insuranceType').value,
+                
+                // Add-ons
+                addons: [],
+                
+                // Price details
+                basePrice: parseFloat(document.getElementById('summaryBasePrice').textContent),
+                insurancePrice: parseFloat(document.getElementById('summaryInsurancePrice').textContent),
+                addonsPrice: 0,
+                serviceFee: parseFloat(document.getElementById('summaryServiceFee').textContent),
+                taxes: parseFloat(document.getElementById('summaryTaxes').textContent),
+                discount: window.currentDiscount || null,
+                discountAmount: document.getElementById('discountItem').style.display === 'flex' ? 
+                    parseFloat(document.getElementById('summaryDiscount').textContent) : 0,
+                total: parseFloat(document.getElementById('summaryTotal').textContent),
+                
+                specialRequests: document.getElementById('specialRequests').value
+            };
+            
+            // Collect add-ons
+            document.querySelectorAll('.addon-checkbox:checked').forEach(checkbox => {
+                formData.addons.push({
+                    name: checkbox.getAttribute('data-name'),
+                    price: parseFloat(checkbox.getAttribute('data-price')),
+                    total: parseFloat(checkbox.getAttribute('data-price')) * formData.rentalDays
+                });
+                
+                formData.addonsPrice += parseFloat(checkbox.getAttribute('data-price')) * formData.rentalDays;
+            });
+            
+            // Save to localStorage for payment page
+            localStorage.setItem('bookingData', JSON.stringify(formData));
+            
+            // Redirect to payment page
+            window.location.href = `payment.html?carId=${formData.carId}`;
+        }
+    </script>
+</body>
+</html>
