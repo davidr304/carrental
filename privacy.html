@@ -1,1080 +1,802 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - DriveRent</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Privacy Page Specific Styles */
-        .privacy-container {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 0 20px;
-        }
-        
-        .privacy-header h1 {
-            font-size: 42px;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-        
-        .privacy-header p {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .last-updated {
-            background-color: #f0f7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            display: inline-block;
-            font-weight: 600;
-            color: #2980b9;
-        }
-        
-        .privacy-content {
-            background-color: white;
-            border-radius: 8px;
-            padding: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        @media (max-width: 768px) {
-            .privacy-content {
-                padding: 30px 20px;
-            }
-        }
-        
-        .privacy-section {
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .privacy-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .privacy-section h2 {
-            font-size: 28px;
-            color: var(--dark);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .privacy-section h3 {
-            font-size: 22px;
-            color: var(--dark);
-            margin: 25px 0 15px;
-        }
-        
-        .privacy-section h4 {
-            font-size: 18px;
-            color: var(--dark);
-            margin: 20px 0 10px;
-        }
-        
-        .privacy-section p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .privacy-section ul, .privacy-section ol {
-            margin: 15px 0 15px 20px;
-            color: #555;
-            line-height: 1.8;
-        }
-        
-        .privacy-section li {
-            margin-bottom: 10px;
-        }
-        
-        .highlight-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        
-        .highlight-box p {
-            margin: 0;
-            color: #444;
-            font-weight: 500;
-        }
-        
-        .data-category {
-            margin: 25px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .data-category h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        
-        .privacy-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .privacy-table th {
-            background-color: #f1f1f1;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--dark);
-            border: 1px solid #ddd;
-        }
-        
-        .privacy-table td {
-            padding: 15px;
-            border: 1px solid #ddd;
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        .privacy-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .info-note {
-            background-color: #e8f4fc;
-            border: 1px solid #a6d2f0;
-            color: #0c5460;
-            padding: 15px;
-            border-radius: 4px;
-            margin: 20px 0;
-        }
-        
-        .rights-section {
-            background-color: #e8f4fc;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 40px;
-        }
-        
-        .rights-section h3 {
-            color: #2980b9;
-            margin-bottom: 20px;
-        }
-        
-        .cookie-settings {
-            background-color: #fff3cd;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-        
-        .cookie-settings h4 {
-            color: #856404;
-            margin-bottom: 15px;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            z-index: 100;
-        }
-        
-        .back-to-top:hover {
-            background-color: #c0392b;
-            transform: translateY(-5px);
-        }
-        
-        /* Table of Contents */
-        .toc-container {
-            background-color: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .toc-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .toc-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .toc-list li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .toc-list li:before {
-            content: "•";
-            color: var(--secondary);
-            font-size: 20px;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-        
-        .toc-list a {
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .toc-list a:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-        
-        /* Contact Box */
-        .contact-box {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            margin-top: 50px;
-            text-align: center;
-        }
-        
-        .contact-box h3 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .contact-box p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 25px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .contact-button {
-            display: inline-block;
-            background-color: white;
-            color: var(--primary);
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .contact-button:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        /* Print Styles */
-        @media print {
-            header, footer, .back-to-top {
-                display: none;
-            }
-            
-            .privacy-container {
-                padding: 20px 0;
-                background-color: white;
-            }
-            
-            .privacy-content {
-                box-shadow: none;
-                padding: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo">Drive<span>Rent</span></a>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html">Cars</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            
-            <div class="auth-buttons">
-                <a href="#" class="login-btn">Login</a>
-                <a href="#" class="signup-btn">Sign Up</a>
+<html class="language-en supportsGridLayout fluidContainer chrome windows largeLayout" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Free Porn Videos &amp; Sex Movies - Porno, XXX, Porn Tube | Ponhub</title>
+      <link rel="stylesheet" href="assets/global-backgrounds.css" type="text/css">
+      <link rel="stylesheet" href="assets/generated-header.css" type="text/css">
+      <link rel="stylesheet" href="assets/front-index-pc.css" type="text/css">
+      <link rel="stylesheet" href="assets/large.css" type="text/css" media="only screen and (min-width:1350px)">
+      <link rel="stylesheet" href="assets/round_flag.css" type="text/css">
+      <link rel="stylesheet" href="assets/ph-icons.css" type="text/css">
+      <style>
+         .erl6ta8kd4ugx446lqlbya,
+         .erl6ta8kd4ugx446lqlbyb,
+         .erl6ta8kd4ugx446lqlbyd,
+         .erl6ta8kd4ugx446lqlbyi {
+         float: right;
+         height: auto !important;
+         }
+         .erl6ta8kd4ugx446lqlbya { width: 40%; }
+         .erl6ta8kd4ugx446lqlbyb { width: 50%; }
+         .erl6ta8kd4ugx446lqlbyd,
+         .erl6ta8kd4ugx446lqlbyi {
+         margin-top:30px;
+         width: 50%;
+         }
+         .erl6ta8kd4ugx446lqlbyc {
+         margin: auto;
+         text-align: center;
+         width: 300px;
+         z-index: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyp {
+         margin: 0;
+         text-align: center;
+         width: 315px;
+         z-index: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyc .ad_title,
+         .erl6ta8kd4ugx446lqlbyp .ad_title {
+         display: block;
+         font-size: 11px;
+         text-align: center;
+         }
+         .erl6ta8kd4ugx446lqlbyv {
+         text-align:center;
+         margin-bottom: 20px;
+         }
+         .erl6ta8kd4ugx446lqlbyv div:first-child  {
+         float: right;
+         }
+         .erl6ta8kd4ugx446lqlbyv iframe {
+         clear: both;
+         padding-bottom: 15px;
+         }
+         .erl6ta8kd4ugx446lqlbyu {
+         padding: 5px;
+         overflow: hidden;
+         text-align: center;
+         line-height: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyu.hd {
+         padding-top: 10.194%;
+         position: relative;
+         }
+         .erl6ta8kd4ugx446lqlbyu.hd > div {
+         position: absolute;
+         top:0;
+         left:0;
+         right:0; 
+         bottom:0;
+         }
+         .erl6ta8kd4ugx446lqlbyu.hd iframe { height:100%; margin:auto; max-width:770px; }
+         .erl6ta8kd4ugx446lqlbyu iframe { margin: auto; }
+         .erl6ta8kd4ugx446lqlbyu a > div { width: 648px; height:64px; }
+         .erl6ta8kd4ugx446lqlbyh {
+         padding: 0;
+         background: none;
+         border: 0;
+         margin:auto;
+         border-radius: 4px;
+         text-align: center;
+         }
+         .erl6ta8kd4ugx446lqlbyh iframe {
+         display: inline-block;
+         padding-bottom: 3px;
+         }
+         .erl6ta8kd4ugx446lqlbyf {
+         padding: 30px 0 0;
+         margin: 0 auto;
+         width: 966px;
+         text-align: center;
+         clear: both;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc {
+         margin-top: 60px;
+         width: 50%;
+         float: right;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbye {
+         margin: 0 auto;
+         width: 315px;
+         }
+         s1hoc88aja {
+         display: block;
+         height: 100%;
+         margin: 0 auto;
+         width: 100%;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc > s1hoc88aja {
+         display: block;
+         margin: 5px auto 0;
+         text-align: center;
+         width: 315px;
+         z-index: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyr,
+         .erl6ta8kd4ugx446lqlbyr s1hoc88aja {
+         background-size: contain;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc.erl6ta8kd4ugx446lqlbyz {
+         margin-top: 15px;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc.erl6ta8kd4ugx446lqlbyz s1hoc88aja {
+         margin: 0;
+         }
+         .erl6ta8kd4ugx446lqlbys,
+         .erl6ta8kd4ugx446lqlbyt { margin: 0 auto; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyb s1hoc88aja { margin: 5px auto 0; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyz s1hoc88aja,
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyz iframe { margin: 5px auto 0; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyz {
+         text-align: center;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyq {
+         float: right;
+         margin-top: 40px;
+         width: 50%;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyq s1hoc88aja {
+         margin: 5px auto 0;
+         text-align: center;
+         width: 315px;
+         z-index: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbya { width: 40%; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbya.erl6ta8kd4ugx446lqlbyg { width: 40%; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbya s1hoc88aja { margin: 0 auto; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyb {
+         width: 50%;
+         }
+         @media (min-width:1350px) {
+         .erl6ta8kd4ugx446lqlbya,
+         .erl6ta8kd4ugx446lqlbyb {
+         margin-top: 50px;
+         }
+         .erl6ta8kd4ugx446lqlbyd {
+         width: 40%;
+         margin-top:50px;
+         }
+         .erl6ta8kd4ugx446lqlbyi {
+         width: 40%;
+         margin-top:30px;
+         }
+         .erl6ta8kd4ugx446lqlbyc,
+         .erl6ta8kd4ugx446lqlbyp {
+         text-align: center;
+         z-index: 0;
+         }
+         .erl6ta8kd4ugx446lqlbyp {
+         margin: 0 auto;
+         background-color: #101010;
+         }
+         .erl6ta8kd4ugx446lqlbyc .ad_title,
+         .erl6ta8kd4ugx446lqlbyp .ad_title {
+         display: block;
+         font-size: 11px;
+         text-align: center;
+         }
+         .hd-thumbs .erl6ta8kd4ugx446lqlbyc .ad_title,
+         .hd-thumbs .erl6ta8kd4ugx446lqlbyc .ad-link {
+         display: block;
+         }
+         .erl6ta8kd4ugx446lqlbyu.hd { height:76px; margin:auto;width:770px; padding-top:0; }
+         .erl6ta8kd4ugx446lqlbyu.hd iframe { height:76px!important; }
+         .erl6ta8kd4ugx446lqlbyh {
+         padding:20px;
+         border: 1px solid #1D1D1D;
+         background: #101010;
+         }
+         .erl6ta8kd4ugx446lqlbyf .removeAdsStyle { font-size: 12px; }
+         .erl6ta8kd4ugx446lqlbyf ul li.ps-list { width: 16%; }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc {
+         width: 40%;
+         margin-top:60px;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc.erl6ta8kd4ugx446lqlbyz {
+         width: 40%;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyc.erl6ta8kd4ugx446lqlbyz s1hoc88aja {
+         margin: 0 auto;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbyq {
+         width: 40%;
+         }
+         .erl6ta8kd4ugx446lqlbyw.erl6ta8kd4ugx446lqlbya.erl6ta8kd4ugx446lqlbyg { width: 30%; }
+         }
+      </style>
+      <link rel="preload" as="style" href="asets/ph-icons.css" type="text/css">
+      <style type="text/css">.hideNetworkBar {display: none;}.networkBar {background:#000000;height: 22px;line-height: normal;position: relative;text-align: center}.networkListContent {display: inline-block;text-align: left;margin: 0;}.networkSticky {position: fixed;top: 0;left: 0;width: 100%;z-index: 50;}.networkStickyBg,.networkStickyBg.light {background:#ffffff;}.networkListContent li {display: inline-block;position: relative;-webkit-tap-highlight-color: rgba(0,0,0,0);vertical-align: top;}.networkListContent .networkTab:not(.eudsaTabIcon) {color:#969696;text-transform: uppercase;padding: 5px 24px;font-size: 11px;display: block;text-decoration: none;cursor: pointer;font-weight: normal;box-sizing: border-box;}.networkListContent >li >.networkTab:not(.eudsaTabIcon) {height: 22px;}.networkListContent .languageDropdown > .networkTab {min-width: 75px;box-sizing: border-box;}.networkListContent .networkTab img {width: 16px;margin-right: 8px;position: relative;top: -1px;display: inline-block;vertical-align: middle;}.networkListContent .networkTab.eudsaTabIcon {top: 3px;right: -5px;}.networkListContent .networkTab.current {font-weight: bold;color:#ffffff;cursor: default;}.networkListContent .networkTab.current:hover {background: transparent;}.networkListContent .downArrow >.networkTab:after,.networkListContent .upArrow >.networkTab:after,.networkListContent .leftArrow >.networkTab:after,.networkListContent .rightArrow >.networkTab:after {content: " ";display: block;width: 0;height: 0;margin-left: 5px;float: right;position: relative;top: 4px;}.networkListContent .downArrow.active.rotateArrow >.networkTab:after,.networkListContent .upArrow.active.rotateArrow >.networkTab:after,.networkListContent .leftArrow.active.rotateArrow >.networkTab:after,.networkListContent .rightArrow.active.rotateArrow >.networkTab:after {-webkit-transform: rotate(180deg);-ms-transform: rotate(180deg);transform: rotate(180deg);}.networkListContent .downArrow >.networkTab:after {border-left: 3px solid transparent;border-right: 3px solid transparent;border-top: 4px solid #C6C6C6;}.networkListContent .upArrow >.networkTab:after {border-left: 3px solid transparent;border-right: 3px solid transparent;border-bottom: 4px solid #C6C6C6;}.networkListContent .leftArrow >.networkTab:after {border-top: 3px solid transparent;border-bottom: 3px solid transparent;border-right: 4px solid #C6C6C6;}.networkListContent .rightArrow >.networkTab:after {border-top: 3px solid transparent;border-bottom: 3px solid transparent;border-left: 4px solid #C6C6C6;}.networkListContent .downArrow.active >.networkTab:after {border-top-color:#ffffff;}.networkListContent .leftArrow.active >.networkTab:after {border-right-color:#ffffff;}.networkListContent .rightArrow.active >.networkTab:after {border-left-color:#ffffff;}.networkListContent .upArrow.active >.networkTab:after {border-bottom-color:#ffffff;}.networkListContent .dropdown {position: absolute;text-align: left;z-index: 50;right: 0;width: 100px;background:#0E0E0E;border: 2px solid #151515;border-radius: 6px;}.networkListContent .wide.sitesDropdown .dropdown {right: -95px;}.networkListContent .languageDropdown  .dropdown {right: -45px;}.networkListContent .wide .dropdown {width: 150px;}.networkListContent .dropdown.subDropdown {left: 150px;bottom: 0;background:#282828;}.networkListContent .dropdown.hide {display: none;}.networkListContent .dropdown li {display: block;-webkit-tap-highlight-color: rgba(0,0,0,0);}.networkListContent .dropdown li .networkTab {padding: 8px 10px;font-size: 15px;line-height: 20px;font-weight: 400;text-transform: capitalize;}.networkListContent .dropdown li.languageLabel .networkTab {font-size: 16px;line-height: 25px;font-weight: 700;color: #ffffff;}.networkListContent .dropdown li.current .networkTab,.networkListContent .dropdown li.languageLabel .networkTab {color: #ffffff;pointer-events: none;}.networkListContent >li >.networkTab:not(.eudsaTabIcon):hover,.tabletNetworkBar .networkListContent >.dropdownTrigger.active >.networkTab,.networkListContent >.dropdownTrigger.active >.networkTab:not(.eudsaTabIcon):hover {color:#C6C6C6;}.networkListContent >li >.networkTab.eudsaTabIcon:hover,.tabletNetworkBar .networkListContent >.dropdownTrigger.active >.networkTab.eudsaTabIcon,.networkListContent >.dropdownTrigger.active >.networkTab.eudsaTabIcon:hover {text-decoration: none;}.networkListContent >.dropdownTrigger.active >.networkTab {color: #ffffff;}.tabletNetworkBar .networkListContent >li:not(.active) >.networkTab:not(.eudsaTabIcon):hover {color:#C6C6C6;background: transparent;}.tabletNetworkBar .networkListContent >li >.networkTab.current:hover {color:#ffffff;}.networkListContent .dropdown .dropdownTrigger.active >.networkTab,.tabletNetworkBar .networkListContent .dropdown .dropdownTrigger.active >.networkTab {background:#282828;color:#ffffff;}.networkListContent .dropdown >li .networkTab {color:#C6C6C6;}.networkListContent .dropdown >li .networkTab:not(.eudsaTabIcon):hover {color:#ffffff;}.tabletNetworkBar .networkListContent .dropdown >li .networkTab:not(.eudsaTabIcon):hover {color:#C6C6C6;background: transparent;}@media (max-width: 1024px) {.networkListContent .networkTab:not(.eudsaTabIcon) {padding: 5px 18.3px;}.networkListContent .languageDropdown > .networkTab {min-width: 63px;}.networkListContent .dropdown {left: auto;right: 0;width: 100px;}.networkListContent .dropdown.subDropdown {left: 0;bottom: auto;top: 32px;}.networkListContent .downArrowTablet >.networkTab:after,.networkListContent .downArrow.downArrowTablet >.networkTab:after,.networkListContent .upArrow.downArrowTablet >.networkTab:after,.networkListContent .leftArrow.downArrowTablet >.networkTab:after,.networkListContent .rightArrow.downArrowTablet >.networkTab:after ,.networkListContent .upArrowTablet >.networkTab:after,.networkListContent .downArrow.upArrowTablet >.networkTab:after,.networkListContent .upArrow.upArrowTablet >.networkTab:after,.networkListContent .leftArrow.upArrowTablet >.networkTab:after,.networkListContent .rightArrow.upArrowTablet >.networkTab:after ,.networkListContent .leftArrowTablet >.networkTab:after,.networkListContent .downArrow.leftArrowTablet >.networkTab:after,.networkListContent .upArrow.leftArrowTablet >.networkTab:after,.networkListContent .leftArrow.leftArrowTablet >.networkTab:after,.networkListContent .rightArrow.leftArrowTablet >.networkTab:after ,.networkListContent .rightArrowTablet >.networkTab:after,.networkListContent .downArrow.rightArrowTablet >.networkTab:after,.networkListContent .upArrow.rightArrowTablet >.networkTab:after,.networkListContent .leftArrow.rightArrowTablet >.networkTab:after,.networkListContent .rightArrow.rightArrowTablet >.networkTab:after {content: " ";display: block;width: 0;height: 0;margin-left: 5px;float: right;position: relative;top: 4px;}.networkListContent .downArrowTablet >.networkTab:after,.networkListContent .downArrow.downArrowTablet >.networkTab:after,.networkListContent .upArrow.downArrowTablet >.networkTab:after,.networkListContent .leftArrow.downArrowTablet >.networkTab:after,.networkListContent .rightArrow.downArrowTablet >.networkTab:after {border-left: 3px solid transparent;border-right: 3px solid transparent;border-top: 4px solid #C6C6C6;border-bottom: none;}.networkListContent .upArrowTablet >.networkTab:after,.networkListContent .downArrow.upArrowTablet >.networkTab:after,.networkListContent .upArrow.upArrowTablet >.networkTab:after,.networkListContent .leftArrow.upArrowTablet >.networkTab:after,.networkListContent .rightArrow.upArrowTablet >.networkTab:after { border-left: 3px solid transparent;border-right: 3px solid transparent;border-bottom: 4px solid #C6C6C6;border-top: none;}.networkListContent .leftArrowTablet >.networkTab:after,.networkListContent .downArrow.leftArrowTablet >.networkTab:after,.networkListContent .upArrow.leftArrowTablet >.networkTab:after,.networkListContent .leftArrow.leftArrowTablet >.networkTab:after,.networkListContent .rightArrow.leftArrowTablet >.networkTab:after {border-top: 3px solid transparent;border-bottom: 3px solid transparent;border-right: 4px solid #C6C6C6;border-left: none;}.networkListContent .rightArrowTablet >.networkTab:after,.networkListContent .downArrow.rightArrowTablet >.networkTab:after,.networkListContent .upArrow.rightArrowTablet >.networkTab:after,.networkListContent .leftArrow.rightArrowTablet >.networkTab:after,.networkListContent .rightArrow.rightArrowTablet >.networkTab:after {border-top: 3px solid transparent;border-bottom: 3px solid transparent;border-left: 4px solid #C6C6C6;border-right: none;}.networkListContent .downArrowTablet.active >.networkTab:after {border-top-color:#ffffff;}.networkListContent .leftArrowTablet.active >.networkTab:after {border-right-color:#ffffff;}.networkListContent .rightArrowTablet.active >.networkTab:after {border-left-color:#ffffff;}.networkListContent .upArrowTablet.active >.networkTab:after {border-bottom-color:#ffffff;}.networkListContent .downArrow.active.rotateArrowTablet >.networkTab:after,.networkListContent .upArrow.active.rotateArrowTablet >.networkTab:after,.networkListContent .leftArrow.active.rotateArrowTablet >.networkTab:after,.networkListContent .rightArrow.active.rotateArrowTablet >.networkTab:after,.networkListContent .downArrowTablet.active.rotateArrowTablet >.networkTab:after,.networkListContent .upArrowTablet.active.rotateArrowTablet >.networkTab:after,.networkListContent .leftArrowTablet.active.rotateArrowTablet >.networkTab:after,.networkListContent .rightArrowTablet.active.rotateArrowTablet >.networkTab:after {-webkit-transform: rotate(180deg);-ms-transform: rotate(180deg);transform: rotate(180deg);}.networkListContent .downArrow.active.rotateArrow.disableRotateArrowTablet >.networkTab:after,.networkListContent .upArrow.active.rotateArrow.disableRotateArrowTablet >.networkTab:after,.networkListContent .leftArrow.active.rotateArrow.disableRotateArrowTablet >.networkTab:after,.networkListContent .rightArrow.active.rotateArrow.disableRotateArrowTablet >.networkTab:after {-webkit-transform: rotate(0deg);-ms-transform: rotate(0deg);transform: rotate(0deg);}.networkListContent .noArrowTablet >.networkTab:after {border: none;}}@media (max-width: 768px) {.networkListContent .networkTab:not(.eudsaTabIcon) {padding: 5px 8.8px;}.networkListContent .languageDropdown > .networkTab {min-width: 44px;}}.networkBar.light {background: #fff;}.networkBar.light .networkListContent .networkTab {color: #474747;}.networkBar.light .networkListContent .dropdown {background: #dbdbdb;}.networkBar.light .networkListContent .dropdown .dropdownTrigger.active >.networkTab,.networkBar.light.tabletNetworkBar .networkListContent .dropdown .dropdownTrigger.active >.networkTab,.networkBar.light .networkListContent .dropdown >li .networkTab:hover {background: #f6f6f6;color: #747474;}.networkBar.light .networkListContent .dropdown.subDropdown {background: #f6f6f6;color: #747474;}.networkBar.light .networkListContent .networkTab.current {color: #747474;}.networkBar.light .networkListContent .networkTab.current:hover {background: transparent;}.networkBar.light .networkListContent >li >.networkTab:hover,.networkBar.light.tabletNetworkBar .networkListContent >.dropdownTrigger.active >.networkTab,.networkBar.light .networkListContent >.dropdownTrigger.active >.networkTab {color: #747474;background: #dbdbdb;}.networkBar.light.tabletNetworkBar .networkListContent .dropdown >li.dropdownTrigger:not(.active) .networkTab:hover {color: #474747}.networkBar.light .networkListContent .downArrow >.networkTab:after {border-top-color: #474747;}.networkBar.light .networkListContent .upArrow >.networkTab:after {border-bottom-color: #474747;}.networkBar.light .networkListContent .leftArrow >.networkTab:after {border-right-color: #474747;}.networkBar.light .networkListContent .rightArrow >.networkTab:after {border-left-color: #474747;}.networkBar.light .networkListContent .downArrow.active >.networkTab:after {border-top-color: #747474;}.networkBar.light .networkListContent .leftArrow.active >.networkTab:after {border-right-color: #747474;}.networkBar.light .networkListContent .rightArrow.active >.networkTab:after {border-left-color: #747474;}.networkBar.light .networkListContent .upArrow.active >.networkTab:after {border-bottom-color: #747474;}@media (max-width: 1024px) {.networkBar.light .networkListContent .downArrowTablet >.networkTab:after,.networkBar.light .networkListContent .downArrow.downArrowTablet >.networkTab:after,.networkBar.light .networkListContent .upArrow.downArrowTablet >.networkTab:after,.networkBar.light .networkListContent .leftArrow.downArrowTablet >.networkTab:after,.networkBar.light .networkListContent .rightArrow.downArrowTablet >.networkTab:after {border-left-color: transparent;border-right-color: transparent;border-top-color: #474747;border-bottom: none;}.networkBar.light .networkListContent .upArrowTablet >.networkTab:after,.networkBar.light .networkListContent .downArrow.upArrowTablet >.networkTab:after,.networkBar.light .networkListContent .upArrow.upArrowTablet >.networkTab:after,.networkBar.light .networkListContent .leftArrow.upArrowTablet >.networkTab:after,.networkBar.light .networkListContent .rightArrow.upArrowTablet >.networkTab:after {border-left-color: transparent;border-right-color: transparent;border-bottom-color: #474747;border-top-color: none;}.networkBar.light .networkListContent .leftArrowTablet >.networkTab:after,.networkBar.light .networkListContent .downArrow.leftArrowTablet >.networkTab:after,.networkBar.light .networkListContent .upArrow.leftArrowTablet >.networkTab:after,.networkBar.light .networkListContent .leftArrow.leftArrowTablet >.networkTab:after,.networkBar.light .networkListContent .rightArrow.leftArrowTablet >.networkTab:after {border-top-color: transparent;border-bottom-color: transparent;border-right-color: #474747;border-left: none;}.networkBar.light .networkListContent .rightArrowTablet >.networkTab:after,.networkBar.light .networkListContent .downArrow.rightArrowTablet >.networkTab:after,.networkBar.light .networkListContent .upArrow.rightArrowTablet >.networkTab:after,.networkBar.light .networkListContent .leftArrow.rightArrowTablet >.networkTab:after,.networkBar.light .networkListContent .rightArrow.rightArrowTablet >.networkTab:after {border-top-color: transparent;border-bottom-color: transparent;border-left-color: #474747;border-right: none;}.networkBar.light .networkListContent .downArrowTablet.active >.networkTab:after {border-top-color: #747474;}.networkBar.light .networkListContent .leftArrowTablet.active >.networkTab:after {border-right-color: #747474;}.networkBar.light .networkListContent .rightArrowTablet.active >.networkTab:after {border-left-color: #747474;}.networkBar.light .networkListContent .upArrowTablet.active >.networkTab:after {border-bottom-color: #747474;}.networkBar.light.tabletNetworkBar .networkListContent .dropdown >li .networkTab:hover,.networkBar.light.tabletNetworkBar .networkListContent >li:not(.active) >.networkTab:hover {background: transparent;color: #474747;}.networkBar.light.tabletNetworkBar .networkListContent >li >.networkTab.current:hover {color: #747474;}}.networkBar { width: 1323px; margin: 0 auto; }@media screen and (max-width: 1349px) { .networkBar { width: 991px; }}
+         .socialIconsWrapper img {
+         max-width: 32px;
+         }
+         #headerLoginLink {
+         padding: 0 !important;
+         width: 50px;
+         height: 50px;
+         }
+         #headerLoginLink img {
+         width: 100%;
+         }
+         .js-headerUploadBtn img {
+         width: 32px;
+         }
+         #btnSearch img {
+         width: 20px;
+         margin: 9px 0 0 10px;
+         }
+         #desktopNavigation img {
+         width: 28px;
+         }
+         .rightAlign.moreActionMenuButton img {
+         width: 7px;
+         }
+         .views img {
+         width: 16px;
+         }
+         .rating-container.neutral img {
+         width: 12px;
+         }
+      </style>
+      <link rel="icon" type="image/png" sizes="32x32" href="img/hub.png">
+      <link rel="stylesheet" href="css/style.css" type="text/css">
+   </head>
+   <body class="logged-out">
+      <div class="networkBarWrapper">
+         <div id="js-networkBar" class="networkBar">
+            <ul class="networkListContent">
+               <li class="alpha"><a class="networkTab" href="#">Spicevids</a></li>
+               <li><a class="networkTab" href="#">UViU</a></li>
+               <li><a class="networkTab" href="#">Sexual wellness</a></li>
+               <li><a class="networkTab" href="#">Insights</a></li>
+               <li class="dropdownTrigger wide sitesDropdown">
+                  <span class="networkTab">sites</span>
+               </li>
+               <li><a class="networkTab" href="#">Shop</a></li>
+               <li><a class="networkTab" href="#">Trust &amp; Safety</a></li>
+               <li class="dropdownTrigger languageDropdown omega" data-id="8">
+                  <span class="networkTab">en</span>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="wrapper">
+         <header id="header">
+            <div id="headerWrapper">
+               <div id="headerContainer" class=" withCustomPromoBtn">
+                  <div class="headerContainerColumn">
+                     <div class="logo Ponhub_logo ">
+                        <button id="desktopNavigation" type="button" aria-label="Desktop Navigation">
+                        <img src="img/burger.jpg">
+                        </button>
+                        <div class="logoWrapper">
+                           <a class="gtm-event-header" href="#">
+                           <img alt="#" width="150" height="26" src="img/logo.png">
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="headerContainerColumn withSearch withCustomPromoBtn">
+                     <div id="headerSearchWrapperFree" class="headerSearchWrapper">
+                        <form autocomplete="off" id="search_form" action="#" method="get">
+                           <fieldset class="fs-nf">
+                              <div id="searchBarContainer" class="">
+                                 <div id="btnSearch" role="button" aria-label="Search">
+                                    <img src="img/search.jpg">
+                                 </div>
+                                 <label for="search">
+                                 <input id="searchInput" type="text" value="" placeholder="Search Ponhub" maxlength="100" name="search" autocomplete="off">
+                                 </label>
+                                 <div id="clearInput" class="hidden">
+                                    <span class="ph-icon-cancel"></span>
+                                 </div>
+                              </div>
+                           </fieldset>
+                        </form>
+                     </div>
+                     <div class="uploadBtnContentSpicevids">
+                        <span>
+                        <a id="headerUpgradePremiumBtn" class="orangeButton filterBtn" href="#" style="background-color: #cc00ff; color: #000000; border: 2px solid #000000;" target="_blank">
+                        1win
+                        </a>
+                        </span>
+                     </div>
+                     <div class="uploadBtnContent">
+                        <a class="js-headerUploadBtn " rel="nofollow" href="#">
+                        <img src="img/video.jpg">
+                        </a>
+                        <a class="js-headerUploadBtn" rel="nofollow" href="#">
+                        <img src="img/camera.jpg">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="headerContainerColumn">
+                     <div id="topRightProfileMenu" class="signOut">
+                        <a class="removeAdLink signIn" id="headerLoginLink">
+                        <img src="img/user.jpg">
+                        </a>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </header>
+            <div id="headerMenuContainer" class="">
+               <div id="headerMainMenuInner">
+                  <div id="headerCampaignDiv">
+                     <ul id="headerMainMenu" class="">
+                        <li id="menuItem1" tabindex="0" class="menu item-1 home  alpha" data-hover="0">
+                           <a href="#" class="active js-topMenuLink" target="_self">
+                           <span class="itemName">Home<span class="activeLine"></span></span>
+                           </a>
+                        </li>
+                        <li itemprop="name" id="menuItem2" tabindex="0" class="menu item-2 videos " data-hover="0">
+                           <a href="#" class="js-topMenuLink" target="_self">
+                           <span class="itemName">
+                           <span class="arrowMenu">Porn Videos</span>
+                           <span class="arrow arrowMenu"></span>
+                           <span class="activeLine"></span>
+                           </span>
+                           </a>
+                        </li>
+                        <li id="menuItem3" class="menu item-3 categories">
+                           <a href="#" class="js-topMenuLink" target="_self">
+                           <span class="itemName">
+                           <span class="arrowMenu">Categories</span>
+                           <span class="arrow arrowMenu"></span>
+                           <span class="activeLine"></span>
+                           </span>
+                           </a>
+                        </li>
+                        <li id="menuItem4" class="asyncLoad menu item-4 livesex">
+                           <a href="#" class="js-topMenuLink gtm-event-header-paidtabs js-liveCam">
+                           <span class="itemName"><span class="arrowMenu">Live Cams</span><span class="arrow arrowMenu"></span><span class="activeLine"></span></span>
+                           </a>
+                        </li>
+                        <li id="menuItem5" class="menu item-5 pornstar">
+                           <a href="#" class="js-topMenuLink">
+                           <span class="itemName"><span class="arrowMenu">Pornstars</span><span class="arrow arrowMenu"></span><span class="activeLine"></span></span>
+                           </a>
+                        </li>
+                        <li id="menuItem6" class="menu item-6 realsex">
+                           <a href="#" class="js-topMenuLink gtm-event-header-paidtabs">
+                           <span class="itemName">FUCK NOW</span>
+                           </a>
+                        </li>
+                        <li id="menuItem7" class="menu item-7 community">
+                           <a href="#" class="js-topMenuLink">
+                           <span class="itemName">
+                           <span class="arrowMenu">Community</span>
+                           <span class="arrow arrowMenu"></span>
+                           <span class="activeLine"></span>
+                           </span>
+                           </a>
+                        </li>
+                        <li id="menuItem8" class="menu item-8 photos  omega">
+                           <a href="#" class="js-topMenuLink">
+                           <span class="itemName">
+                           <span class="arrowMenu">Photos &amp; GIFs</span>
+                           <span class="arrow arrowMenu"></span>
+                           <span class="activeLine"></span>
+                           </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="container">
+            <br>
+            <br>
+            <br>
+            <div id="information_privacy" class="section">
+   <h2 style="margin-left:0px;"><strong>Privacy Notice&nbsp;</strong></h2>
+   <p style="margin-left:0px;"><span style="font-family:Verdana, Geneva, sans-serif;"><i><strong>Last Modified:</strong></i> </span>May 23rd,&nbsp;2024</p>
+   <p style="margin-left:0px;"><strong>NOTE: </strong>This Privacy Notice is drafted in English. If this Privacy Notice is offered in any language other than English it shall be for information purposes only and, in case of conflict between the English-language version and any translation thereof, the English-language version will prevail.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>Introduction</strong></h3>
+   <p style="text-align:justify;">Aylo Freesites Ltd (hereinafter “<strong>we</strong>”, “<strong>us</strong>” or “<strong>our</strong>”) operates the website&nbsp;<a href="http://www.ponhub.com">www.ponhub.com</a> (hereinafter “<strong>ponhub</strong>”) and is the controller of the information collected or provided via ponhub.</p>
+   <p style="text-align:justify;">Please read this Privacy Notice carefully, as your access to and use of ponhub signifies that you have read and understand all terms within this Privacy Notice. We respect your privacy and are committed to protecting your personal data.</p>
+   <p style="text-align:justify;">If you have any questions about our privacy practices, please see the section “<i>Contact Information</i>” below for information on how to contact us.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>1. Scope</strong></h3>
+   <p style="text-align:justify;">For the purposes of this Privacy Notice, “<strong>process</strong>”, “<strong>processed</strong>” or “<strong>processing</strong>” means any operation or set of operations performed on personal data or on sets of personal data (excluding disclosure thereof), whether by automated means, including one or several of the following operations: collection, recording, organization, structuring, storage, adaptation or alteration, retrieval, consultation, use, alignment or combination, restriction, erasure, or destruction.&nbsp;Information on disclosure of personal data or of sets of personal data may be found in the “<i>Disclosure of Your Personal Information</i>” section below.</p>
+   <p style="text-align:justify;">This Privacy Notice applies to information we process:</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;">on ponhub; and</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;">on your communications with ponhub via email, online support chats, phoneline support or otherwise.</p>
+      </li>
+   </ul>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>2. The Data We Process About You</strong></h3>
+   <p style="text-align:justify;">We may process different kinds of personal data about you, depending on whether you chose to create an account with us.</p>
+   <p style="text-align:justify;">Persons who visit ponhub without logging in or registering (“<strong>Unregistered Users</strong>”):</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><strong>Contact Data:</strong>&nbsp;We will only process your email address or any other information which you voluntarily provide to us at your direction for a specific function, namely, to participate in a contest or survey.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Online Forms and Communication Data:</strong> We process Contact Data and other information that you submit through online forms provided on ponhub or information send to us via email, online support chats or such as information provided in the context of support requests or any other inquiries, the content reporting and moderation of content, and&nbsp;our internal complaint handling system.<strong>&nbsp;</strong></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Website activity data:</strong>&nbsp;We process information about how you use ponhub, products and services and interact with content and advertisements, including the pages you visit and search history on ponhub, and the referring web page from which you arrived on ponhub from. We process browser and operating system information, devices you use to access ponhub and your time zone setting. We also process online identifiers. Specifically, we process internet protocol (IP) address information and we set cookies as explained below in the section on <i>Cookies and Automatic Data Processing Technologies.</i></p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><strong>Identifiers: &nbsp;</strong>Some users may be asked to provide identifiers (including government-issued photo identification as well as other documentation) to verify that they are over the age of majority required to have access to ponhub and to view their contents. In such cases, this information is processed by trusted third-party age verification service providers. This Privacy Notice does not apply to the privacy practices of these third-party age verification service providers. Read the privacy terms and conditions of these third-party service providers carefully.</p>
+      </li>
+   </ul>
+   <p style="text-align:justify;">For persons who choose to create an account on ponhub (“<strong>Registered Users</strong>”), we process the same categories of information described above for Unregistered Users, and additionally the following information:</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><strong>Contact Data:</strong>&nbsp;We process usernames, and email addresses. If you choose to register through a third-party platform, we will collect certain personal information from those platforms.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>User Submitted Personal Information:</strong>&nbsp;We process information you submit to personalize your account or for a specific function, for example date of birth, age, gender, your interests, preferences, feedback, your preferences in receiving marketing from us and our third parties, and your communication preferences, as well as any other information which you voluntarily provide to us at your direction for a specific function.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Identifiers and Biometric Information:</strong> If you choose to register to ponhub or if this is required for age verification purposes, we process identifiers you submit to us (including government-issued photo identification as well as other documentation) for us to verify your identity, age, and record checks. Our third-party service provider will also process you face scan which is considered biometric information to verify the authenticity of the identifiers you provide to us while registering for such services as further explained in the section “<i>Biometric Information</i>” below.&nbsp; This Privacy Notice may not always reflect the privacy practices said third-party service providers and therefore invite you to consult their privacy notices and terms and conditions of these third-party service providers.&nbsp;</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><strong>User Contributions including Audio/Video Information:</strong>&nbsp;We provide areas on ponhub where you can post information about yourself and others, communicate with others, upload content (e.g., pictures, video files, etc.), and post comments or reviews of content found on ponhub.</p>
+      </li>
+   </ul>
+   <p style="text-align:justify;">Please use caution in providing user contributions.&nbsp;<strong>By providing user contributions you are making that content and information publicly available.</strong>&nbsp;User contributions can be read, collected, used, and disclosed by others, and we cannot control who accesses your user contributions or what other users may do with the information you voluntarily post or submit. User contributions are governed by the ponhub terms of use found at&nbsp;<a href="#">https://www.ponhub.com/information/terms</a>&nbsp;.</p>
+   <p style="text-align:justify;">We may process your data to produce and share aggregated insights that do not directly or indirectly identify you and are not associated with you. Such aggregate information is not personal information.</p>
+   <p style="text-align:justify;">ponhub prohibits minors from using the platform. ponhub is forbidden for persons under the age of 18 and the applicable age of majority in the jurisdiction from which ponhub is accessed. As indicated throughout this Privacy Notice, some users may be asked to provide some information to us and our service providers for us to make sure that you are over the age of majority required to have access to the ponhub. We do not knowingly process personal information from minors. If you are the parent or legal guardian of a minor who has provided us with personal information, then please contact us at&nbsp;<a href="mailto:support@ponhub.com">support@ponhub.com</a>&nbsp;to have that minor’s personal information deleted.</p>
+   <p style="text-align:justify;">&nbsp;</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>3. The Sources from Which We Process Personal Information</strong></h3>
+   <p style="text-align:justify;">We process Personal Information in the following ways:</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><strong>Directly from you:</strong>&nbsp;We process the categories of information listed above directly from you.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Automated technologies or interactions:</strong>&nbsp;As explained in the section below on&nbsp;<i>Cookies and Automatic Data Processing Technologies</i>, we set cookies and other automatic techniques to process website activity data when you visit ponhub.</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><strong>Third-Party Single Sign-on:</strong> We may obtain information if you choose to create or sign-in your account through a third-party platform if available, we will have access to certain information from that platform such as your name, email address or such other information you may have submitted and allowed this third party to share.&nbsp;</p>
+         <p style="text-align:justify;">&nbsp;</p>
+      </li>
+   </ul>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>4. Purposes for Which We Process Your Personal Information</strong></h3>
+   <p style="text-align:justify;">We process personal information for the purposes described below.</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><strong>Provision of services:</strong>&nbsp;We process identifiers, website activity data, Contact Data (if voluntarily submitted as described hereinabove) and, additionally for Registered Users only, user contributions, including any interactive features on ponhub, products or services that you request from us, and to verify your eligibility and deliver prizes in connection with contests and sweepstakes.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Customer management (Registered Users Only):</strong>&nbsp;We process identifiers and Contact Data to manage Registered Users’ account, to provide customer support and notices to the Registered Users about their account, and notices about changes to ponhub or any products or services we offer or provide through them.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Age and Identity verification.&nbsp;</strong>In some cases, we process identifiers and will use third party service providers to process biometric information for the purpose of verifying your identity and the authenticity of the identifiers you provide to us while registering for an account on ponhub.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Customization of content and marketing (Unregistered Users and Registered Users):</strong>&nbsp;We process for both Registered Users and Unregistered Users identifiers and website activity data; and for Registered Users, user submitted personal information and user contributions to analyze your use of, or interest in the content, products, or services, to display content and advertising tailored to your interests on ponhub.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Communications and handling of requests:</strong> We process Online Forms and Communications Data and other information as necessary to respond to and resolve any of your requests, including where this is required to ensure compliance with our legal obligations.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Analytics:</strong>&nbsp;We process identifiers and website activity data to determine whether users of ponhub are unique, or whether the same user is using ponhub on multiple occasions, and to monitor aggregate metrics such as total number of visitors, pages viewed, demographic patterns.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Functionality and security:</strong>&nbsp;We may process any of the categories of data mentioned herein to diagnose or fix technology problems, to detect, prevent, and respond to actual or potential fraud, illegal activities, or intellectual property infringement.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Platform Safety</strong>: To promote safety and security on ponhub. We use the information we collect to help protect ponhub users from harm and provide safe, secure product.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Compliance:</strong>&nbsp;We may process any of the categories of data mentioned herein to enforce this Privacy Notice, our Terms and Conditions and to comply with any legal obligations, namely but not limited to responding to your data subject requests, to verify the age of users having access to ponhub, to respond to content reports, and to comply with applicable content moderation and complaint handling obligations.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Hash Values:</strong> We may create hash values from any of the categories of data we process, such as infringing or illegal content to detect, prevent, and combat illegal activities including fraud, sexual assault, or exploitation. We reserve the right to share any hashes with law enforcement agencies.&nbsp;</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><strong>Information you provide</strong>: We will process Contact Data and user submitted personal information in any other way we may describe when you provide the information or for any other purpose with your consent provided separately from this Privacy Notice.</p>
+      </li>
+   </ul>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>5. Our Legal Bases under Canadian and European Union (EU) Privacy Law</strong></h3>
+   <p style="margin-left:0cm;text-align:justify;"><span style="color:#fff;">To the extent required by applicable laws, we process your personal data only when:&nbsp;</span></p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;">You provide your consent for a specific purpose: for example, when you allow us to show you personalized ads or to send you e-mail marketing. You may withdraw your consent at any time. Withdrawing your consent will not affect the lawfulness of any collection, use, processing, or disclosure that occurred prior to the withdrawal.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">Biometric information may also be processed via a third party service provider with your consent.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">It is necessary to perform our contractual obligations as per our Terms &amp; Conditions on ponhub: for example, to create your account.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">It is necessary to comply with legal obligations: for example, we may be required to collect, use, or disclose your information in connection with civil, criminal, corporate, taxation, regulatory matters, or litigation.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">It satisfies a legitimate interest which is not overridden by your data protection interests: for example, to keep ponhub safe and secure from fraud and illegal activities.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">It is used to protect your or others’ vital interests: for example, in case of emergency or to prevent a crime or fraud.</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;">It is used for tasks carried out in the public interest: for example, to combat unlawful behavior where it is in the public interest to do so and where the public interest is laid down by applicable law.</p>
+      </li>
+   </ul>
+   <p style="text-align:justify;"><span style="color:#fff;">Depending on the circumstances, we may rely on different legal bases when processing your same information for different purposes. If you reside outside the European Economic Area (“EEA”), Switzerland or the United Kingdom (“UK”), the legal bases on which we rely may differ from those listed above.</span></p>
+   <p style="text-align:justify;">&nbsp;</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>6. Disclosure of Your Personal Information</strong></h3>
+   <p style="text-align:justify;"><span style="color:#fff;">We disclose your personal information when necessary to perform the services or for other purposes set out in this Privacy Notice. When we disclose your personal information, we usually rely on the performance of our contract with you, our legal obligation to do so, our legitimate interest (e.g., operating ponhub), so long as it doesn’t outweigh your interests or your consent, except when expressly stated otherwise below in the paragraph “<i>To comply with the law or protect our rights or the rights of third parties</i>”. Disclosure of your personal information may also involve transfers of your personal information outside the EEA. To the extent that we need to transfer personal information outside the EEA, we will do so according to the section “<i>Transfers of Your Personal Information to Other Countries</i>” or when necessary for the performance of the contract between us. The parties to whom we may disclose your personal information include:&nbsp;</span></p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><strong>the public:</strong>&nbsp;When you submit user contributions, including audio/video content, certain information about you will be publicly displayed on ponhub, such as your uploaded content, information about you, etc. You can choose to make certain information and activities private through your profile settings. This information might be accessible to various locations worldwide from which ponhub can be accessed.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>our contractors and/or employees:&nbsp;</strong>To provide our services to you, our employees and/or contractors<strong>&nbsp;</strong>may receive access to your personal data only on a need-to-know basis. Such employees and contractors abide by confidentiality obligations.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>our corporate group:</strong>&nbsp;We may disclose any of the categories of personal information that we collect to members of our corporate group&nbsp; &nbsp; &nbsp; to the extent this is necessary for the purposes described in this Privacy Notice, and generally to operate our business, which includes: identification and age verification purposes, transaction monitoring and payment processing, customer support, facilitate business development, administer user accounts or provide IT, technical and engineering support. You acknowledge that in some cases, members of our corporate group might be established or run their services outside the EEA.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Linked Third-Party Websites or Single Sign-On Services</strong>:&nbsp;You may choose to sign-in, connect or register an account using an external third-party platform, or Single Sign-On (SSO) if available. If you choose to connect your account to a third-party platform, the providers of this platform may receive information about you. When you use third-party platforms, their own terms and privacy policies will govern their use.&nbsp;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Service providers:</strong>&nbsp;We disclose certain categories of personal information to our authorized service providers to enable us to provide our services to you pursuant to our Terms &amp; Conditions. These service providers may use your information only to perform these tasks on our behalf, such as identity and document authenticity verification including biometric processing, age verification, risk and fraud detection and mitigation, customer service, marketing and advertising, customization of content, analytics, security, hosting or supporting ponhub’s functionality. These service providers have limited access to personal information needed to perform their functions but are not permitted to process such information for any other purposes. Where required under applicable laws, we have entered into data processing agreements with such service providers to ensure that personal information is only processed securely within our instructions. You can view the list of our third-party service providers acting as our processors&nbsp;<a href="#" target="_blank" rel="noopener noreferrer">here</a>.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><strong>Legal successors:</strong>&nbsp;We may disclose all categories of personal information we process to a buyer or other successor in the event of a merger, acquisition or sale or transfer of some or all our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding. Such transactions may be in our legitimate interest, particularly our interest in making decisions that enable our business to develop.&nbsp;</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><strong>To comply with the law or protect our rights or the rights of third parties:</strong>&nbsp;We access, preserve and share personal information with regulators, public authorities, law enforcement, government agencies, out-of-court dispute settlement bodies or others where we reasonably believe such disclosure is needed to:&nbsp;</p>
+      </li>
+   </ul>
+   <ol style="list-style-type:lower-alpha;">
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">comply with any applicable law, regulation, court order, legal process, government or public authority requests</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">enforce applicable Terms &amp; Conditions, including prevention of potential violations thereof. This also includes our Trust and Safety initiative, in the scope of which we may disclose some information to several recipients. You can find out more about this&nbsp;</span><a href="#"><span style="color:hsl(210,75%,60%);">here</span></a><span style="color:hsl(210,75%,60%);">.</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">detect, prevent, or otherwise address illegal or suspected illegal activities, security, or technical issues.&nbsp;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">protect against harm to the rights, property or safety of our company, our users, our employees, or others; or&nbsp;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">to maintain and protect the security and integrity of ponhub or infrastructure. In such cases, we may raise or waive any legal objection or right available to us, in our sole discretion.</span></p>
+      </li>
+   </ol>
+   <p style="text-align:justify;"><span style="color:#fff;">We may disclose your information to third parties for the above purposes where necessary to comply with our legal obligations, to perform a task in the public interest (where the public interest is laid down by applicable law), or under our legitimate interests and the interests of the public, including as part of investigations or regulatory enquiries to detect, investigate and prosecute illegal activity.</span></p>
+   <h3><strong>7. Cookies and Automatic Data Collection Technologies</strong></h3>
+   <p style="text-align:justify;">As you navigate through and interact with ponhub, we use automatic data collection technologies to collect website activity data. The technologies we use for this automatic data collection include cookies and other similar technologies. Cookies are small text files that are stored in your web browser or downloaded to your device when you visit ponhub. For more information on how we use cookies, please refer to our Cookie Notice, available <a href="#">here.</a></p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>8. Your Choices About How We Collect, Use and Disclose Your Personal Information</strong></h3>
+   <p style="text-align:justify;">We strive to provide you with choices regarding the personal information you provide to us.</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;">You can choose not to provide us with certain personal information, but that may result in you being unable to use certain features of ponhub because such information may be required for you to create an account, use our products or services, participate in a contest, promotion, survey, or sweepstakes, communicate with our support teams, or initiate other activities on ponhub.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">The Cookie Banner can be utilized to customize your cookie preferences. The Cookie Banner will record when you have consented to our cookies. For logged-in users, we will ask for consent once a year or when we have major changes to our cookies, to ensure you stay up to date with changes to our cookies and Privacy Notice. For non-logged in users, your Cookie Banner selection will be kept only for the specific session. The Cookie Banner specifically controls the functionality, analytics, and advertising cookies set by using ponhub. Strictly necessary cookies cannot be disabled, nor can the tool be used to block cookies on third party websites linked from our website. You can access the Cookie Banner anytime by clicking on the ‘Manage cookies’ option that is located at the footer of ponhub.</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;">Where we provide personalised services, we may analyse the information you supply, as well as your activity on ponhub so that we can offer a more relevant, tailored service. For instance, we could use your favourites list to provide personalised content recommendations or ads. If you do not want to receive these services, you can switch off the recommendations toggle on the “recommended” page or via the bar at the left of our page.&nbsp;For more information on how we use recommendations, please click&nbsp;</span><a href="#">here</a><span style="color:#fff;">.</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;">You can opt out of receiving marketing emails from us using the opt-out link provided in our emails or by changing your preferences in your account settings. If you are a Registered User, we may continue to send you&nbsp;<strong>other types of important emails, such as</strong> e-mails about your account.</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">You may use your account settings to delete your user contributions and audio/video information.</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;">You may also delete and deactivate your account with us at any time unless we are not allowed to do so by law or by a court order. If you do so, your profile will no longer be accessible by you. If you later choose to have an account with us, you will have to sign up for a new account as none of the information you previously provided or saved within your account will have been saved.</p>
+      </li>
+   </ul>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>9. California Rights and Choices</strong></h3>
+   <p style="text-align:justify;">As of January 1, 2020, the California Consumer Privacy Act of 2018 (“CCPA”) provides California residents (“Consumer(s)”) certain rights with respect to their personal information, as this term is defined under the CCPA. In addition to the rights that we state under this Privacy Notice, and subject to the exceptions found under the CCPA, Consumers have the right to:</p>
+   <p style="margin-left:18.0pt;text-align:justify;">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Opt-out of the sale of their personal information, should we sell their personal information;</p>
+   <p style="margin-left:18.0pt;text-align:justify;">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Be informed of certain information concerning our collection and use of their personal information;</p>
+   <p style="margin-left:18.0pt;text-align:justify;">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Request that we delete certain personal information we collected from them;</p>
+   <p style="margin-left:18.0pt;text-align:justify;">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Appoint an agent to exercise their rights provided for by the CCPA, provided that a duly executed notarized power of attorney is presented and provided that the agent has information deemed sufficient to allow us to verify the identity of the Consumer in question and to locate his/her information in our systems;</p>
+   <p style="margin-left:18.0pt;text-align:justify;">•&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not be subjected to discrimination for the exercise of these rights. We will not deny California residents the use of our service, neither will we provide a different level or quality or services for exercising any of their CCPA rights, unless as permitted under the CCPA.</p>
+   <p style="text-align:justify;">ponhub does not sell, nor has it sold in the past twelve (12) months personal information to third parties for monetary or other valuable consideration. We may however disclose certain personal information with third parties, service providers and entities within our corporate group to enable them to perform certain services on our behalf, and namely to make ponhub function properly, as further described in the section above titled <i>Disclosure of Your Personal Information</i>.&nbsp;</p>
+   <p style="text-align:justify;">We respect California residents’ right to exclude personal information from such sharing arrangements and grant them the option to opt-out of any future sale of their personal information. If you are a Registered User and the CCPA is applicable to you and you would like to exercise your rights, please use the buttons at the bottom of this page or email us at&nbsp;<a href="mailto:support@ponhub.com">support@ponhub.com</a>&nbsp; with the email subject line “CCPA Request”.</p>
+   <p style="text-align:justify;">In either case you will need to provide the following information to verify your identity and enable us to locate your information in our systems: your username and email address that you used to create an account with us, as well as any other information which we may reasonably request for us to verify your identity. We may require you verify that you have access to your account and/or email account that you used to register with us.</p>
+   <p style="text-align:justify;">You can designate an agent to make a request by executing a notarized power of attorney to have that person act on your behalf and providing that person with the information listed above that allows us to verify your identity and locate your information. Alternatively, you will need to directly confirm your identity with us using the methods described above, sign an authorization for the agent to act on your behalf and provide us with confirmation that you have done so.</p>
+   <p style="text-align:justify;">&nbsp;</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>10. Resident’s Rights – Jurisdictions in the United States, Where Applicable</strong></h3>
+   <p style="text-align:justify;">We do not sell, trade, or exchange the Registered Users’ personal information with anyone for money.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>11. Biometric Information</strong></h3>
+   <p style="text-align:justify;">We employ third-party service providers to verify your identity, age, and the authenticity of the identification documents you provide using facial recognition technology. Facial recognition technology creates a mathematical representation of your facial features from the live scan of your face, your selfie, and the government-issued ID you submit or previously submitted to us. Information derived from this face scan or mathematical representation may be considered biometric information under the laws of certain states and countries and may be shared with us by our third-party service providers:&nbsp;</p>
+   <p style="text-align:justify;">When applicable, your biometric information may be processed to:</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;">verify you are a real, live person and to prevent the use of methods which would allow a user to identify as someone else;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">to match your selfie with your government-issued ID you submit or previously submitted to us to make sure that nobody is impersonating you;</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;">to help confirm your age.</p>
+      </li>
+   </ul>
+   <p style="text-align:justify;">Please note that this section entitled “<i>Biometric Information</i>” applies to relevant users who wish to upload content onto ponhub but does not apply to identifiers processed by our third-party age verification service providers solely for the purpose of granting you access to ponhub to view the contents found thereon. Our third-party service providers will store your biometric information according to their retention policies, please consult the section “Retention of Personal Information” below to understand our retention practices.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>12. Notice to Law Enforcement</strong></h3>
+   <p style="text-align:justify;">The following information serves as a guideline for law enforcement officials seeking disclosure of records. You may serve us a valid court order, subpoena, search warrant or equivalent legal or official administrative document by respecting the following conditions:</p>
+   <ul>
+      <li class="alpha">
+         <p style="text-align:justify;">The document(s) is uploaded, and all required fields have been filed out adequately on our platform for Legal Service Process located at:&nbsp;<a href="#">https://legalservice.aylo.com/legal/datarequest</a>;</p>
+      </li>
+      <li>
+         <p style="text-align:justify;">The document(s) you are serving is correctly issued to Aylo Freesites Ltd by a valid court of law or equivalent legal or administrative authority to us;</p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;">The document(s) is also sent by mail at the following address: 195-197 Old Nicosia-Limassol Road, Block 1 Dali Industrial Zone, Cyprus 2540.</p>
+      </li>
+   </ul>
+   <p style="text-align:justify;">We reserve the right to refuse online service through ponhub, namely in cases where the above requirements are not met and require formal legal service at the above address. In such an event, you will be notified. We may raise or waive any legal objection or right available, in our sole discretion.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>13. Transfers of Your Personal Information to Other Countries</strong></h3>
+   <p style="text-align:justify;">We may share the information we collect globally, across our corporate group and with our service providers and other third parties. Transfers are necessary for a variety of reasons, including our operation and provision of the services stated in our Terms &amp; Conditions and this Privacy Notice to fix, analyse, and improve our Website, products and services. Whenever we transfer personal information to countries outside the EEA and other regions with comprehensive data protection laws, we will ensure that the information is transferred in accordance with this Privacy Notice, as permitted by the applicable laws and based on appropriate mechanisms.</p>
+   <p style="text-align:justify;">Where applicable, we rely on decisions of the European Commission, known as “adequacy decisions,” recognising that certain countries offer a level of protection of personal data that is essentially equivalent to the EEA.&nbsp;</p>
+   <p style="text-align:justify;">In other situations, we rely on standard contractual clauses approved by the European Commission (and the equivalent standard contractual clauses for the UK, where appropriate) or on derogations provided for under the applicable law to transfer information to a third country.</p>
+   <p style="text-align:justify;">For more information or to obtain a copy of our standard contractual clauses, please see the section “<i>Contact Information</i>” below on how to contact us.</p>
+   <p style="text-align:justify;">&nbsp;</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>14. Retention of Personal Information</strong></h3>
+   <p style="text-align:justify;">We will only retain your personal information for as long as your account is active, or for as long as necessary to fulfil the purposes we processed it for, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
+   <p style="text-align:justify;">To determine the appropriate retention period for personal data, we consider several factors, including what personal data we are processing, the risk of harm from any unauthorized disclosure, why we are processing your personal data and whether we can achieve this outcome by another means without having to process it.</p>
+   <p style="text-align:justify;">Where we no longer need to process your personal information for the purposes set out in this Privacy Notice, we will delete your personal information from our systems.&nbsp;</p>
+   <p style="text-align:justify;">For more information on data retention periods, please see the section “<i>Contact Information</i>” below on how to contact us.&nbsp;</p>
+   <p style="text-align:justify;">Where permissible, we will also delete your personal information upon your request as explained in the section&nbsp;<i>“Your Rights Related to Your Personal Information”</i>.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>15. Third-Party Links and Sites</strong></h3>
+   <p style="text-align:justify;">If you click on a link to a third-party website, you will be taken to websites we do not control. This Privacy Notice does not apply to the privacy practices of these websites. Read the Privacy Notice of other websites carefully. We are not responsible for these third-party practices.</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>16. Changes to Our Privacy Notice</strong></h3>
+   <p style="text-align:justify;">We may modify or revise our Privacy Notice from time to time. We may attempt to notify you of any material changes as required by law. Please periodically review the most up-to-date version of our Privacy Notice, which will be posted at this location, so you are aware of any changes. The date of the Privacy Notice can be found at the top of the page (“last modified”).</p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>17. Contact Information</strong></h3>
+   <p style="text-align:justify;">If you have any questions about this Privacy Notice or our information-handling practices, please contact us at&nbsp;<a href="mailto:support@ponhub.com">support@ponhub.com</a>.</p>
+   <p style="text-align:justify;">You may also contact us at 195-197 Old Nicosia-Limassol Road, Block 1 Dali Industrial Zone, Cyprus 2540, Phone: +357 22662 320, Fax: +357 22343 282.</p>
+   <p style="text-align:justify;">Our Data Protection Officer can be contacted at the following email address:&nbsp;<a href="mailto:dpo@ponhub.com">dpo@ponhub.com.</a></p>
+   <h3 style="text-align:justify;margin-bottom:15px;"><strong>18. Your Rights Related to Your Personal Information</strong></h3>
+   <p style="text-align:justify;">Subject to local law and applicable legal requirements and exemptions, you have certain rights regarding your personal data:</p>
+   <ul style="list-style-type:disc;">
+      <li class="alpha">
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right of access</strong>: you have the right to receive information on the personal data we hold about you and how such personal data is used, as well as a copy of your personal data;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to rectification</strong>: you have the right to rectify inaccurate personal data concerning you;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to be forgotten</strong>: you have the right to delete/erase your personal data;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to data portability</strong>: you have the right to receive the personal data provided by you in a structured, commonly used, and machine-readable format and to transmit this personal data to another data controller;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to object</strong>: you have the right to object to the use of your personal data where such use is based on our legitimate interests or on public interests;&nbsp;</span></p>
+      </li>
+      <li>
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to restriction of processing</strong>: you have the right in some cases, to restrict our use of your personal data; and</span></p>
+      </li>
+      <li class="omega">
+         <p style="text-align:justify;"><span style="color:#fff;"><strong>Right to file a complaint</strong>: If you are in the EEA or the UK, you also have a right to file a complaint with your local data protection authority.</span></p>
+      </li>
+   </ul>
+   <p style="margin-left:0cm;text-align:justify;"><span style="color:#fff;">If we ask for your consent to process your personal data, you have the right to withdraw your consent at any time with effect for the future. Note that, in that case, you may no longer able to use several functionalities on ponhub or access ponhub in some cases.</span></p>
+   <p style="margin-left:0cm;text-align:justify;"><span style="color:#fff;">You can exercise your rights of access or deletion of your data by following the dedicated links in the section “<i>Manage Your Personal Data</i>” below. You can send an e-mail at </span><a href="mailto:support@ponhub.com">support@ponhub.com</a><span style="color:#fff;">&nbsp;to exercise your rights to Rectification, Object, Restriction of Processing, or to request us to help you with the process. Please note that</span> we have one (1) month to respond to your request.<span style="color:#fff;">&nbsp;</span></p>
+   <p style="margin-left:0cm;text-align:justify;"><span style="color:#fff;">Prior to processing an access or deletion request of your data, we will need to verify your identity and ensure your right to access or delete the information. This is an appropriate and reasonable security measure to ensure that personal data is not disclosed to any person who has no right to receive it or deleted in an unauthorized way.&nbsp;</span></p>
+   <p style="text-align:justify;">Please note that unless you have created an account with us, we may not have sufficient information to identify you and therefore may not be able to respond to your request. Additionally, in some cases, to adequately verify your identity or your authorization to make the request, we may require you to provide additional information.</p>
+   <p style="text-align:justify;">Note that some requests to delete certain personal information will require the deletion of your user account as the provision of user accounts are inextricably linked to the processing of certain personal information (e.g., your e-mail address). If you delete your account, your personal data and all account related information including, but not limited to, user profile data, sharing data and any data or content specifically associated with your account will no longer be accessible. If, after deleting your account, you wish to have an account with us in the future, you will have to sign up for a new account.</p>
+   <h3 style="margin-left:0px;margin-bottom: 15px;"><strong>19. Manage Your Personal Data</strong></h3>
+   <p style="margin-left:0px;">Registered Users may request a copy of their personal data or request the deletion of their personal data via the links below. Please note that the below website is governed by the present Privacy Notice. &nbsp;</p>
+   <div class="buttonsBlock">
+      <a class="gdprButton" href="#" target="_blank">
+      REQUEST A COPY OF MY PERSONAL DATA</a>
+      <a class="gdprButton" href="#" target="_blank">
+      DELETE MY PERSONAL DATA                        </a>
+      <p class="gdprAdBlocksNote">Note: AdBlocker add-ons interfere with the Manage My Data system. Please disable them.</p>
+   </div>
+</div>
 
-    <!-- Privacy Container -->
-    <section class="privacy-container">
-        <div class="container">
-            <!-- Privacy Header -->
-            <div class="privacy-header">
-                <h1>Privacy Policy</h1>
-                <p>At DriveRent, we are committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services.</p>
-                <div class="last-updated">Last Updated: October 15, 2023</div>
+         </div>
+      </div>
+      <div class="footerContentWrapper">
+         <p class="footer">Ponhub provides you with unlimited free porn videos with the hottest pornstars. Enjoy the largest amateur porn community on the net as well as full-length scenes from the top XXX studios. We update our porn videos daily to ensure you always get the best quality sex movies.</p>
+         <section id="footer">
+            <div class="footerContent">
+               <div class="col">
+                  <ul>
+                     <li class="title alpha">Information</li>
+                     <li><a href="#">Sitemap</a></li>
+                     <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                     <li><a href="privacy.html">Privacy Notice</a></li>
+                     <li><a href="#">DMCA</a></li>
+                     <li><a href="#">2257</a></li>
+                     <li><a href="#">EU DSA</a></li>
+                     <li><a href="#">Recommender System Guidelines</a></li>
+                     <li><a href="#">Cookie Notice</a></li>
+                  </ul>
+               </div>
+               <div class="col">
+                  <ul>
+                     <li class="title alpha">Work With Us</li>
+                     <li><a href="#">Content Partners</a></li>
+                     <li><a href="#">Advertise</a></li>
+                     <li><a href="#">Webmasters</a></li>
+                     <li><a href="#">Model Program</a></li>
+                     <li><a href="#">Press</a></li>
+                  </ul>
+               </div>
+               <div class="col">
+                  <ul>
+                     <li class="title alpha">Support and Help</li>
+                     <li><a href="#">Content Removal</a></li>
+                     <li><a href="#">Contact Support</a></li>
+                     <li><a href="#">FAQ</a></li>
+                     <li><a href="#">Trust and Safety</a></li>
+                     <li><a href="#">Parental Controls</a></li>
+                     <li><a href="#">Feedback</a></li>
+                  </ul>
+               </div>
+               <div class="col">
+                  <ul>
+                     <li class="title alpha">Discover</li>
+                     <li><a href="#">Ponhub Blog</a></li>
+                     <li><a href="#">Insights Blog</a></li>
+                     <li><a href="#">Sexual Wellness Center</a></li>
+                     <li><a href="#">Mobile </a></li>
+                     <li><a href="#"> Visually Impaired</a></li>
+                     <li><a href="#">Audio Impaired</a></li>
+                  </ul>
+               </div>
             </div>
-            
-            <!-- Table of Contents -->
-            <div class="toc-container">
-                <div class="toc-title">Table of Contents</div>
-                <ul class="toc-list">
-                    <li><a href="#introduction">1. Introduction</a></li>
-                    <li><a href="#collection">2. Information We Collect</a></li>
-                    <li><a href="#use">3. How We Use Your Information</a></li>
-                    <li><a href="#sharing">4. Information Sharing</a></li>
-                    <li><a href="#security">5. Data Security</a></li>
-                    <li><a href="#retention">6. Data Retention</a></li>
-                    <li><a href="#rights">7. Your Rights</a></li>
-                    <li><a href="#cookies">8. Cookies & Tracking</a></li>
-                    <li><a href="#children">9. Children's Privacy</a></li>
-                    <li><a href="#changes">10. Policy Changes</a></li>
-                    <li><a href="#contact">11. Contact Us</a></li>
-                </ul>
+            <div class="languageWrapper js_dropdownBound" data-dropdown-id="0">
+               <div class="languagesLable">Language:</div>
+               <div class="languageSelected dropdownTrigger">
+                  <div class="iconSphere bg-sprite-icons"></div>
+                  English        
+                  <div class="dropArrow"></div>
+                  <ul class="languages dropdownWrapper" style="display: none;">
+                     <li class="de alpha">
+                        <a href="#" data-lang="de" data-root="Ponhub.org">
+                        <span>Deutsch</span>
+                        </a>
+                     </li>
+                     <li class="fr">
+                        <a href="#" data-lang="fr" data-root="Ponhub.org">
+                        <span>Français</span>
+                        </a>
+                     </li>
+                     <li class="es">
+                        <a href="#" data-lang="es" data-root="Ponhub.org">
+                        <span>Español</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
             </div>
-            
-            <!-- Privacy Content -->
-            <div class="privacy-content">
-                <!-- Section 1 -->
-                <div class="privacy-section" id="introduction">
-                    <h2>1. Introduction</h2>
-                    <p>DriveRent ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by DriveRent.</p>
-                    
-                    <p>This Privacy Policy applies to our website, mobile applications, and related services (collectively, our "Services"). By accessing or using our Services, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy.</p>
-                    
-                    <div class="highlight-box">
-                        <p><strong>Important:</strong> This Privacy Policy is incorporated into and subject to our Terms and Conditions. By using our Services, you consent to the practices described in this policy.</p>
-                    </div>
-                    
-                    <h3>1.1 Scope</h3>
-                    <p>This Privacy Policy covers information we collect from you through our Services. It does not apply to information collected by third-party websites, services, or applications that may be accessed through links on our Services.</p>
-                    
-                    <h3>1.2 Definitions</h3>
-                    <p>For the purposes of this Privacy Policy:</p>
-                    
-                    <div class="data-category">
-                        <h4>Personal Information</h4>
-                        <p>Any information relating to an identified or identifiable natural person. This includes, but is not limited to, name, address, email, phone number, driver's license information, and payment details.</p>
-                    </div>
-                    
-                    <div class="data-category">
-                        <h4>Usage Data</h4>
-                        <p>Information collected automatically when using our Services, such as IP address, browser type, device information, and pages visited.</p>
-                    </div>
-                </div>
-                
-                <!-- Section 2 -->
-                <div class="privacy-section" id="collection">
-                    <h2>2. Information We Collect</h2>
-                    <p>We collect several types of information for various purposes to provide and improve our Services to you.</p>
-                    
-                    <h3>2.1 Personal Information You Provide</h3>
-                    <p>When you use our Services, we may ask you to provide certain personally identifiable information that can be used to contact or identify you. This may include:</p>
-                    
-                    <div class="table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Examples</th>
-                                    <th>Purpose</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Identification Information</td>
-                                    <td>Full name, date of birth, driver's license number, passport details</td>
-                                    <td>Identity verification, compliance with legal requirements</td>
-                                </tr>
-                                <tr>
-                                    <td>Contact Information</td>
-                                    <td>Email address, phone number, home address</td>
-                                    <td>Communication, booking confirmations, customer support</td>
-                                </tr>
-                                <tr>
-                                    <td>Payment Information</td>
-                                    <td>Credit/debit card details, billing address, cryptocurrency wallet addresses</td>
-                                    <td>Processing payments, security deposits, refunds</td>
-                                </tr>
-                                <tr>
-                                    <td>Booking Information</td>
-                                    <td>Rental dates, vehicle preferences, pickup/drop-off locations</td>
-                                    <td>Reservation processing, service provision</td>
-                                </tr>
-                                <tr>
-                                    <td>Driver Information</td>
-                                    <td>Driving history, license status, insurance information</td>
-                                    <td>Risk assessment, insurance processing</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h3>2.2 Information Collected Automatically</h3>
-                    <p>When you visit our website or use our mobile app, we automatically collect certain information about your device and usage patterns:</p>
-                    
-                    <ul>
-                        <li><strong>Device Information:</strong> IP address, browser type and version, device type, operating system</li>
-                        <li><strong>Usage Information:</strong> Pages visited, time spent on pages, clickstream data, search queries</li>
-                        <li><strong>Location Information:</strong> Approximate location based on IP address or GPS (with your consent)</li>
-                        <li><strong>Technical Information:</strong> Cookies, log files, web beacons, and similar tracking technologies</li>
-                    </ul>
-                    
-                    <div class="info-note">
-                        <strong>Note:</strong> We use cookies and similar tracking technologies to track activity on our Services and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
-                    </div>
-                    
-                    <h3>2.3 Information from Third Parties</h3>
-                    <p>We may receive information about you from third parties, including:</p>
-                    
-                    <ul>
-                        <li>Credit reporting agencies for identity verification</li>
-                        <li>Insurance companies for coverage verification</li>
-                        <li>Payment processors for transaction verification</li>
-                        <li>Marketing partners for promotional activities</li>
-                        <li>Government agencies for regulatory compliance</li>
-                    </ul>
-                </div>
-                
-                <!-- Section 3 -->
-                <div class="privacy-section" id="use">
-                    <h2>3. How We Use Your Information</h2>
-                    <p>We use the information we collect for various business purposes, including:</p>
-                    
-                    <div class="table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Purpose</th>
-                                    <th>Legal Basis</th>
-                                    <th>Information Used</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Providing Services</td>
-                                    <td>Contractual necessity</td>
-                                    <td>All personal information required for rental</td>
-                                </tr>
-                                <tr>
-                                    <td>Processing Payments</td>
-                                    <td>Contractual necessity</td>
-                                    <td>Payment information, billing details</td>
-                                </tr>
-                                <tr>
-                                    <td>Customer Support</td>
-                                    <td>Legitimate interest</td>
-                                    <td>Contact information, booking details</td>
-                                </tr>
-                                <tr>
-                                    <td>Marketing & Promotions</td>
-                                    <td>Consent or legitimate interest</td>
-                                    <td>Contact information, usage patterns</td>
-                                </tr>
-                                <tr>
-                                    <td>Improving Services</td>
-                                    <td>Legitimate interest</td>
-                                    <td>Usage data, feedback, survey responses</td>
-                                </tr>
-                                <tr>
-                                    <td>Legal Compliance</td>
-                                    <td>Legal obligation</td>
-                                    <td>Identification, driver, and payment information</td>
-                                </tr>
-                                <tr>
-                                    <td>Security & Fraud Prevention</td>
-                                    <td>Legitimate interest</td>
-                                    <td>All collected information</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h3>3.1 Service Provision</h3>
-                    <p>We use your information to:</p>
-                    <ul>
-                        <li>Process your reservations and manage your bookings</li>
-                        <li>Verify your identity and driving eligibility</li>
-                        <li>Process payments and handle security deposits</li>
-                        <li>Provide customer support and respond to inquiries</li>
-                        <li>Send booking confirmations, updates, and reminders</li>
-                    </ul>
-                    
-                    <h3>3.2 Marketing Communications</h3>
-                    <p>With your consent, we may use your information to:</p>
-                    <ul>
-                        <li>Send promotional emails about new vehicles, special offers, or other updates</li>
-                        <li>Personalize your experience and show relevant content</li>
-                        <li>Conduct surveys and collect feedback to improve our Services</li>
-                    </ul>
-                    
-                    <p>You can opt out of receiving marketing communications at any time by clicking the "unsubscribe" link in our emails or contacting us directly.</p>
-                </div>
-                
-                <!-- Section 4 -->
-                <div class="privacy-section" id="sharing">
-                    <h2>4. Information Sharing</h2>
-                    <p>We do not sell your personal information to third parties. We may share your information in the following circumstances:</p>
-                    
-                    <div class="table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Third Party</th>
-                                    <th>Purpose of Sharing</th>
-                                    <th>Information Shared</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Payment Processors</td>
-                                    <td>To process payments and refunds</td>
-                                    <td>Payment information, billing details</td>
-                                </tr>
-                                <tr>
-                                    <td>Insurance Companies</td>
-                                    <td>To verify coverage and process claims</td>
-                                    <td>Driver information, rental details</td>
-                                </tr>
-                                <tr>
-                                    <td>Service Providers</td>
-                                    <td>To provide services on our behalf</td>
-                                    <td>Contact information, booking details</td>
-                                </tr>
-                                <tr>
-                                    <td>Legal Authorities</td>
-                                    <td>To comply with legal obligations</td>
-                                    <td>Identification, rental, and payment information</td>
-                                </tr>
-                                <tr>
-                                    <td>Business Partners</td>
-                                    <td>For joint promotions (with consent)</td>
-                                    <td>Contact information, preferences</td>
-                                </tr>
-                                <tr>
-                                    <td>Affiliated Companies</td>
-                                    <td>For centralized customer service</td>
-                                    <td>All information necessary for service provision</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h3>4.1 Service Providers</h3>
-                    <p>We may employ third-party companies and individuals to facilitate our Services ("Service Providers"), to provide the Services on our behalf, or to assist us in analyzing how our Services are used.</p>
-                    
-                    <p>These Service Providers have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
-                    
-                    <h3>4.2 Legal Requirements</h3>
-                    <p>We may disclose your personal information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).</p>
-                    
-                    <div class="highlight-box">
-                        <p><strong>Important:</strong> We may also disclose your information to enforce our Terms and Conditions, protect our rights, property, or safety, or the rights, property, or safety of others.</p>
-                    </div>
-                    
-                    <h3>4.3 Business Transfers</h3>
-                    <p>If DriveRent is involved in a merger, acquisition, or asset sale, your personal information may be transferred. We will provide notice before your personal information is transferred and becomes subject to a different Privacy Policy.</p>
-                </div>
-                
-                <!-- Section 5 -->
-                <div class="privacy-section" id="security">
-                    <h2>5. Data Security</h2>
-                    <p>The security of your data is important to us. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-                    
-                    <h3>5.1 Security Measures</h3>
-                    <p>Our security measures include:</p>
-                    
-                    <ul>
-                        <li><strong>Encryption:</strong> All sensitive data is encrypted using SSL/TLS technology both in transit and at rest</li>
-                        <li><strong>Access Controls:</strong> Strict access controls limit who can access your personal information</li>
-                        <li><strong>Regular Audits:</strong> We regularly review our security practices and update them as necessary</li>
-                        <li><strong>Employee Training:</strong> All employees are trained on data protection and privacy</li>
-                        <li><strong>Secure Infrastructure:</strong> We use industry-standard secure hosting and infrastructure</li>
-                    </ul>
-                    
-                    <h3>5.2 Data Breach Procedures</h3>
-                    <p>In the event of a data breach, we have procedures in place to:</p>
-                    
-                    <ol>
-                        <li>Contain the breach and assess the damage</li>
-                        <li>Notify affected individuals as required by law</li>
-                        <li>Notify relevant authorities if necessary</li>
-                        <li>Take steps to prevent future breaches</li>
-                    </ol>
-                    
-                    <div class="info-note">
-                        <strong>Note:</strong> While we strive to use commercially acceptable means to protect your personal information, no method of transmission over the Internet or method of electronic storage is 100% secure. We cannot guarantee absolute security.
-                    </div>
-                </div>
-                
-                <!-- Section 6 -->
-                <div class="privacy-section" id="retention">
-                    <h2>6. Data Retention</h2>
-                    <p>We retain your personal information only for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
-                    
-                    <div class="table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Data Type</th>
-                                    <th>Retention Period</th>
-                                    <th>Reason for Retention</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Booking Information</td>
-                                    <td>7 years from last activity</td>
-                                    <td>Legal compliance, financial records</td>
-                                </tr>
-                                <tr>
-                                    <td>Payment Information</td>
-                                    <td>7 years from transaction</td>
-                                    <td>Financial reporting, tax purposes</td>
-                                </tr>
-                                <tr>
-                                    <td>Driver Information</td>
-                                    <td>5 years from last rental</td>
-                                    <td>Risk assessment, insurance purposes</td>
-                                </tr>
-                                <tr>
-                                    <td>Marketing Data</td>
-                                    <td>3 years from last contact</td>
-                                    <td>Marketing analysis, customer engagement</td>
-                                </tr>
-                                <tr>
-                                    <td>Website Analytics</td>
-                                    <td>2 years from collection</td>
-                                    <td>Service improvement, user experience</td>
-                                </tr>
-                                <tr>
-                                    <td>Customer Support Records</td>
-                                    <td>5 years from resolution</td>
-                                    <td>Quality assurance, dispute resolution</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <h3>6.1 Deletion of Data</h3>
-                    <p>Upon expiration of the retention period, we will securely delete or anonymize your personal information. You may also request deletion of your personal information at any time, subject to legal requirements.</p>
-                </div>
-                
-                <!-- Section 7 -->
-                <div class="privacy-section" id="rights">
-                    <h2>7. Your Rights</h2>
-                    <p>Depending on your location, you may have certain rights regarding your personal information:</p>
-                    
-                    <div class="rights-section">
-                        <h3>Your Data Protection Rights</h3>
-                        
-                        <div class="data-category">
-                            <h4>Right to Access</h4>
-                            <p>You have the right to request copies of your personal information that we hold.</p>
-                        </div>
-                        
-                        <div class="data-category">
-                            <h4>Right to Rectification</h4>
-                            <p>You have the right to request correction of any information you believe is inaccurate or incomplete.</p>
-                        </div>
-                        
-                        <div class="data-category">
-                            <h4>Right to Erasure</h4>
-                            <p>You have the right to request that we delete your personal information, under certain conditions.</p>
-                        </div>
-                        
-                        <div class="data-category">
-                            <h4>Right to Restrict Processing</h4>
-                            <p>You have the right to request that we restrict the processing of your personal information, under certain conditions.</p>
-                        </div>
-                        
-                        <div class="data-category">
-                            <h4>Right to Data Portability</h4>
-                            <p>You have the right to request that we transfer the data we have collected to another organization, or directly to you, under certain conditions.</p>
-                        </div>
-                        
-                        <div class="data-category">
-                            <h4>Right to Object</h4>
-                            <p>You have the right to object to our processing of your personal information, under certain conditions.</p>
-                        </div>
-                    </div>
-                    
-                    <h3>7.1 Exercising Your Rights</h3>
-                    <p>To exercise any of these rights, please contact us using the information provided in Section 11. We may need to verify your identity before processing your request.</p>
-                    
-                    <p>We will respond to your request within 30 days. If we need more time, we will notify you of the reason and extension period.</p>
-                    
-                    <h3>7.2 Complaints</h3>
-                    <p>If you believe we have not addressed your concern satisfactorily, you may contact your local data protection authority.</p>
-                </div>
-                
-                <!-- Section 8 -->
-                <div class="privacy-section" id="cookies">
-                    <h2>8. Cookies & Tracking Technologies</h2>
-                    <p>We use cookies and similar tracking technologies to track activity on our Services and hold certain information.</p>
-                    
-                    <h3>8.1 Types of Cookies We Use</h3>
-                    
-                    <div class="table-container">
-                        <table class="privacy-table">
-                            <thead>
-                                <tr>
-                                    <th>Cookie Type</th>
-                                    <th>Purpose</th>
-                                    <th>Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Essential Cookies</td>
-                                    <td>Necessary for the website to function properly (e.g., session management)</td>
-                                    <td>Session</td>
-                                </tr>
-                                <tr>
-                                    <td>Analytics Cookies</td>
-                                    <td>Help us understand how visitors interact with our website</td>
-                                    <td>Up to 2 years</td>
-                                </tr>
-                                <tr>
-                                    <td>Functional Cookies</td>
-                                    <td>Remember your preferences and settings</td>
-                                    <td>Up to 1 year</td>
-                                </tr>
-                                <tr>
-                                    <td>Advertising Cookies</td>
-                                    <td>Deliver relevant advertisements and track ad performance</td>
-                                    <td>Up to 1 year</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="cookie-settings">
-                        <h4>Cookie Preferences</h4>
-                        <p>You can set your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Services.</p>
-                        <p>Most web browsers allow you to control cookies through their settings preferences. To learn more about cookies, including how to manage and delete them, visit <a href="https://www.allaboutcookies.org/" style="color: #856404; font-weight: 600;">allaboutcookies.org</a>.</p>
-                    </div>
-                    
-                    <h3>8.2 Third-Party Tracking</h3>
-                    <p>We may use third-party services (such as Google Analytics) that collect, monitor, and analyze this type of information to increase our Services' functionality. These third-party service providers have their own privacy policies addressing how they use such information.</p>
-                </div>
-                
-                <!-- Section 9 -->
-                <div class="privacy-section" id="children">
-                    <h2>9. Children's Privacy</h2>
-                    <p>Our Services are not intended for individuals under the age of 18 ("Children").</p>
-                    
-                    <p>We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us. If we become aware that we have collected personal information from children without verification of parental consent, we take steps to remove that information from our servers.</p>
-                    
-                    <div class="highlight-box">
-                        <p><strong>Important:</strong> Our car rental services are only available to individuals aged 21 and above (or 25 for certain vehicle categories). We verify the age of all renters during the booking process.</p>
-                    </div>
-                </div>
-                
-                <!-- Section 10 -->
-                <div class="privacy-section" id="changes">
-                    <h2>10. Changes to This Privacy Policy</h2>
-                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
-                    
-                    <p>We will let you know via email and/or a prominent notice on our Services, prior to the change becoming effective. You are advised to review this Privacy Policy periodically for any changes.</p>
-                    
-                    <p>Changes to this Privacy Policy are effective when they are posted on this page. Your continued use of our Services after any modifications to the Privacy Policy will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.</p>
-                </div>
-                
-                <!-- Section 11 -->
-                <div class="privacy-section" id="contact">
-                    <h2>11. Contact Us</h2>
-                    <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                    
-                    <div class="data-category">
-                        <h4>DriveRent Data Protection Officer</h4>
-                        <p>Email: privacy@driverent.com<br>
-                        Phone: +1 (234) 567-8912<br>
-                        Address: 123 Drive Street, Suite 100, City, State 12345, United States</p>
-                    </div>
-                    
-                    <p>For general inquiries, please use our <a href="contact.html" style="color: var(--secondary); font-weight: 600;">Contact Us</a> page.</p>
-                </div>
-                
-                <!-- Contact Box -->
-                <div class="contact-box">
-                    <h3>Questions About Our Privacy Policy?</h3>
-                    <p>If you have any questions or concerns about how we handle your personal information, or if you wish to exercise your data protection rights, please don't hesitate to contact our Data Protection Officer.</p>
-                    <a href="contact.html" class="contact-button">Contact Data Protection Officer</a>
-                </div>
+         </section>
+         <div class="logoFooterWrapper homePageFooter">
+            <div class="socialIconsWrapper">
+               <a href="#" rel="noopener" target="_blank">
+               <img src="img/x.jpg">
+               </a>
+               <a href="#" rel="noopener" target="_blank">
+               <img src="img/m.jpg">
+               </a>
             </div>
-        </div>
-        
-        <!-- Back to Top Button -->
-        <a href="#" class="back-to-top" id="backToTop">
-            <i class="fas fa-arrow-up"></i>
-        </a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>DriveRent</h3>
-                    <p>Your trusted partner for car rentals. We provide quality vehicles at affordable prices with excellent customer service.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html">Cars</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="terms.html">Terms & Conditions</a></li>
-                        <li><a href="privacy.html" style="font-weight: 600;">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Legal Notice</a></li>
-                        <li><a href="#">Accessibility</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Drive Street, City, Country</li>
-                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
-                        <li><i class="fas fa-envelope"></i> info@driverent.com</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 DriveRent. All rights reserved. | <a href="terms.html" style="color: #aaa;">Terms & Conditions</a> | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
-        // Privacy Page Logic
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            if (mobileMenuBtn && mainNav) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mainNav.classList.toggle('active');
-                });
-            }
-            
-            // Back to top button
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            if (backToTopBtn) {
-                // Show/hide button based on scroll position
-                window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 300) {
-                        backToTopBtn.style.display = 'flex';
-                    } else {
-                        backToTopBtn.style.display = 'none';
-                    }
-                });
-                
-                // Smooth scroll to top
-                backToTopBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-            
-            // Smooth scroll for table of contents links
-            document.querySelectorAll('.toc-list a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        // Close mobile menu if open
-                        if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
-                            mainNav.classList.remove('active');
-                        }
-                        
-                        // Scroll to target
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Add highlight to section
-                        targetElement.style.backgroundColor = '#f0f7ff';
-                        setTimeout(() => {
-                            targetElement.style.backgroundColor = '';
-                        }, 2000);
-                    }
-                });
-            });
-            
-            // Highlight current section in view
-            const sections = document.querySelectorAll('.privacy-section');
-            const navLinks = document.querySelectorAll('.toc-list a');
-            
-            function highlightCurrentSection() {
-                let currentSection = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                        link.style.color = 'var(--secondary)';
-                        link.style.fontWeight = '600';
-                    } else {
-                        link.style.color = '';
-                        link.style.fontWeight = '';
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', highlightCurrentSection);
-            
-            // Cookie consent simulation
-            const cookieConsent = document.createElement('div');
-            cookieConsent.id = 'cookieConsent';
-            cookieConsent.innerHTML = `
-                <div style="position: fixed; bottom: 0; left: 0; right: 0; background-color: #333; color: white; padding: 20px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 300px;">
-                        <p style="margin: 0; font-size: 14px;">We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept", you consent to our use of cookies. <a href="privacy.html#cookies" style="color: #4da6ff; text-decoration: underline;">Learn more</a></p>
-                    </div>
-                    <div style="display: flex; gap: 10px; margin-top: 10px;">
-                        <button id="acceptCookies" style="background-color: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600;">Accept</button>
-                        <button id="rejectCookies" style="background-color: transparent; color: white; border: 1px solid white; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Reject</button>
-                    </div>
-                </div>
-            `;
-            
-            // Check if cookie consent has been given
-            if (!localStorage.getItem('cookieConsent')) {
-                document.body.appendChild(cookieConsent);
-                
-                document.getElementById('acceptCookies').addEventListener('click', function() {
-                    localStorage.setItem('cookieConsent', 'accepted');
-                    cookieConsent.style.display = 'none';
-                });
-                
-                document.getElementById('rejectCookies').addEventListener('click', function() {
-                    localStorage.setItem('cookieConsent', 'rejected');
-                    cookieConsent.style.display = 'none';
-                });
-            }
-            
-            // Print functionality
-            const printButton = document.createElement('button');
-            printButton.innerHTML = '<i class="fas fa-print"></i> Print Policy';
-            printButton.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                left: 30px;
-                background-color: var(--primary);
-                color: white;
-                border: none;
-                padding: 12px 20px;
-                border-radius: 4px;
-                font-weight: 600;
-                cursor: pointer;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                z-index: 100;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            `;
-            
-            printButton.addEventListener('click', function() {
-                window.print();
-            });
-            
-            document.body.appendChild(printButton);
-            
-            // Adjust button position on scroll
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    printButton.style.bottom = '90px';
-                } else {
-                    printButton.style.bottom = '30px';
-                }
-            });
-        });
-    </script>
-</body>
+            <span class="copyright">© Ponhub.com, 2024</span>
+            <a href="#" rel="nofollow">
+               <div class="rta">
+                  <img id="RTAImage" alt="RTA" width="88px" height="31px" src="img/rta-1.gif">
+               </div>
+            </a>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script>
+         $(document).ready(function(){
+             $(".pcVideoListItem").click(function(){
+                 $(".under18popup").show();
+             })
+         })
+      </script>
+   </body>
 </html>
